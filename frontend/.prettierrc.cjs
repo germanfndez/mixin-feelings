@@ -1,4 +1,5 @@
 module.exports = {
+	plugins: ['prettier-plugin-svelte'],
 	printWidth: 100,
 	semi: false,
 	singleQuote: true,

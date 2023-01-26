@@ -9,6 +9,10 @@ module.exports = {
 	// ...
 	overrides: [
 		{
+			files: ['*.svelte'],
+			processor: 'svelte3/svelte3'
+		},
+		{
 			files: ['*.astro'],
 			parser: 'astro-eslint-parser',
 			parserOptions: {
@@ -19,5 +23,6 @@ module.exports = {
 				'astro/no-set-html-directive': 'error'
 			}
 		}
-	]
+	],
+	plugins: ['svelte3']
 }

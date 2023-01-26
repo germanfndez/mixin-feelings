@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --ext .js,.astro,.ts,.tsx",
+    "lint": "eslint . --ext .js,.astro,.ts,.tsx,.svelte",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write ."
   },
@@ -28,8 +28,10 @@
   "devDependencies": {
     "@typescript-eslint/parser": "5.49.0",
     "eslint-plugin-astro": "0.23.0",
+    "eslint-plugin-svelte3": "^4.0.0",
     "prettier": "2.8.3",
     "prettier-plugin-astro": "0.7.2",
+    "prettier-plugin-svelte": "^2.9.0",
     "ts-standard": "12.0.2",
     "typescript": "4.9.4"
   },
