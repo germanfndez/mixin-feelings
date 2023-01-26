@@ -1,7 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Hola from '../components/Hola.jsx';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title='Welcome to Astro.'>
-	<h1 class='text-5xl font-bold text-center mt-40'>Hackathon</h1>
+<Layout title='Mixin Feelings.' >
+	<h1 class='text-5xl font-bold text-center mt-40'>Mixin Feelings</h1>
+	<Hola client:visible/>
 </Layout>
