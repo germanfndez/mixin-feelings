@@ -1,0 +1,11 @@
+export type Feeling =
+	| 'Happy'
+	| 'Sad'
+	| 'Bored'
+	| 'Tired'
+	| 'Annoyed'
+	| 'Chill'
+	| 'Scared'
+	| 'Horror'
+	| 'Enamored'
+	| 'Nervous'
