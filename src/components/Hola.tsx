@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { classifyFeelings } from '../services/cohere'
 import { getPlaylistsByFeeling } from '../services/spotify'
+import { successPrompt } from '../supabase/functions/prompts'
 import { Button } from './shared/Button'
 
 type playlist = {
@@ -80,6 +81,20 @@ export default function Hola(): JSX.Element {
 							</div>
 						)
 					})}
+			</div>
+			<div>
+				{playlist && (
+					<button
+						onClick={() => {
+							successPrompt({
+								label: feeling,
+								text: input.textarea
+							})
+						}}
+					>
+						Good
+					</button>
+				)}
 			</div>
 		</form>
 	)
