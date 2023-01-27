@@ -1,9 +1,15 @@
 ---
-import Hola from '../components/Hola.jsx';
-import Layout from '../layouts/Layout.astro';
+import { Footer } from '../components/Footer.jsx'
+import Hola from '../components/Hola.jsx'
+import { Title } from '../components/Title.jsx'
+import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title='Mixin Feelings.' >
-	<h1 class='text-5xl font-bold text-center mt-40'>Mixin Feelings</h1>
-	<Hola client:visible/>
+<Layout title='Mixin Feelings.'>
+	<Title />
+	<main class='grid lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-0 flex-1 w-full container'>
+		<Hola client:visible />
+		<aside class='rounded-md bg-slate-900 shadow-xl shadow-black/30 backdrop-opacity-20'></aside>
+	</main>
+	<Footer />
 </Layout>
