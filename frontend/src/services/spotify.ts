@@ -1,28 +1,40 @@
-export async function getPlaylistByFeeling(feeling) {
-	/* 
-    segun el feeling obtener el id de la playlist  
-  */
+import playlistjson from '../data/playlist.json'
 
-	/* 
+const PLAYLIST = {
+	Sad: ['Sad', 'Sad2', 'Sad3', 'Sad4']
+}
 
-	ABURRIDO = {
-		Bienestar,
-		Relax,
-		Ejercicio
-	}
- /* todo 
- 
- */
+function getRandomPlaylistId(feeling) {
+	const playlists = PLAYLIST[feeling]
 
-	const request = fetch('https://api.spotify.com/v1/playlists/37i9dQZF1DWSqBruwoIXkA', {
-		method: 'GET',
-		headers: {
-			Authorization:
-				'Bearer BQBThw0bps1f7bfGR9GB5CwzB77iPFqEs-7Zg6DdvGhTJJhRvL-JJGov0dy2Qnvg3fR7d5b9MTve0quHjhwQ_hWdTgzlfH-gyGnYq8pmhA1zDDLxSCcZz9Qeb7yUhg7m9HVbZKpdJYfIFI_vvKv3Eiqx6tNv6kmgnbwkDldIsS9AHL5HvQ2g19sMpV4CxHo9_WCrToAv2E0BB7T9XQ',
-			'Content-Type': 'application/json'
-		}
+	const randomPlaylists = playlists
+		.sort(() => 0.5 - Math.random())
+		.reduce((ac, cc) => {
+			if (ac.length === 3) return [...ac]
+			if (ac.includes(cc)) {
+				return [...ac]
+			}
+			return [...ac, cc]
+		}, [])
+
+	return playlistjson
+		.filter((playlist) => randomPlaylists.includes(playlist.name))
+		.map((playlist) => playlist.id)
+}
+
+export async function getPlaylistsByFeeling(feeling) {
+	const randomPlaylistId = getRandomPlaylistId(feeling)
+	const requests = randomPlaylistId.map((id) => {
+		return fetch(`https://api.spotify.com/v1/playlists/${id}`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${import.meta.env.PUBLIC_SPOTIFY_TOKEN}`,
+				'Content-Type': 'application/json'
+			}
+		})
 	})
-	const response = await request
-	const data = await response.json()
+
+	const response = await Promise.all(requests)
+	const data = await Promise.all(response.map((res) => res.json()))
 	return data
 }
