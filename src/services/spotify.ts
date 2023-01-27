@@ -25,11 +25,11 @@ function getRandomPlaylistId(feeling) {
 export async function getPlaylistsByFeeling(feeling) {
 	const randomPlaylistId = getRandomPlaylistId(feeling)
 	const requests = randomPlaylistId.map((id) => {
-		return fetch(`https://api.spotify.com/v1/playlists/${id}`, {
+		return fetch(`https://spotify23.p.rapidapi.com/playlist/?id=${id}`, {
 			method: 'GET',
 			headers: {
-				Authorization: `Bearer ${import.meta.env.PUBLIC_SPOTIFY_TOKEN}`,
-				'Content-Type': 'application/json'
+				'X-RapidAPI-Key': '7343fb580emsh621414b29c43dc2p1af5c9jsn036a8d9d561d',
+				'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
 			}
 		})
 	})
