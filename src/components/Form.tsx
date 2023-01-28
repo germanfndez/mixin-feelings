@@ -1,16 +1,16 @@
-import { lazy, Suspense } from 'react';
-import { useFormFeeling } from '../hooks';
-import { Button } from '../components';
+import { lazy, Suspense } from 'react'
+import { useFormFeeling } from '../hooks'
+import { Button } from '../components'
 
 const FeelingResult = lazy(() => import('./FeelingResult'))
 
 export function Form() {
-
 	const { feeling, loading, onSubmit, playlist } = useFormFeeling()
 
 	return (
-		<form onSubmit={onSubmit}
-			className={`flex flex-col gap-5 relative transition-custom lg:w-[600px] w-full`}
+		<form
+			onSubmit={onSubmit}
+			className={'flex flex-col gap-5 relative transition-custom lg:w-[600px] w-full'}
 		>
 			<label htmlFor='feeling' className='font-semibold'>
 				Tell me, how was your day?

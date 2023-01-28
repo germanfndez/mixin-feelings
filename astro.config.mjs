@@ -4,8 +4,5 @@ import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 
 export default defineConfig({
-	integrations: [
-		svelte(),
-		react(),
-		tailwind()]
+	integrations: [svelte(), react(), tailwind()]
 })

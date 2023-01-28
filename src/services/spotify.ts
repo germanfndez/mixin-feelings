@@ -4,7 +4,7 @@ const RAPIDAPI_KEY = import.meta.env.PUBLIC_RAPIDAPI_KEY
 const RAPIDAPI_HOST = import.meta.env.PUBLIC_RAPIDAPI_HOST
 
 function getRandomPlaylistId(feeling: string) {
-	const playlists = playlistjson[feeling].map(playlist => playlist.name)
+	const playlists = playlistjson[feeling].map((playlist) => playlist.name)
 
 	const randomPlaylists = playlists
 		.sort(() => 0.5 - Math.random())

@@ -1,5 +1,5 @@
 import arrow from '../assets/84339-arrow-down.json'
-import Lottie from 'lottie-react';
+import Lottie from 'lottie-react'
 
 interface Props {
 	feelingClassified: string

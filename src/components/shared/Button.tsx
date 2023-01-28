@@ -6,16 +6,23 @@ interface Props {
 	className?: string
 }
 
-export function Button({ label, disabled = false, type = 'button', onClick, className = '' }: Props) {
+export function Button({
+	label,
+	disabled = false,
+	type = 'button',
+	onClick,
+	className = ''
+}: Props) {
 	return (
 		<button
 			onClick={onClick}
 			aria-label='Button'
 			type={type}
-			className={`grid ${disabled
-				? 'grid-cols-3 bg-indigo-500'
-				: 'place-items-center bg-indigo-600 hover:bg-indigo-500'
-				}  h-11 rounded-md text-white font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none ${className}`}
+			className={`grid ${
+				disabled
+					? 'grid-cols-3 bg-indigo-500'
+					: 'place-items-center bg-indigo-600 hover:bg-indigo-500'
+			}  h-11 rounded-md text-white font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none ${className}`}
 			disabled={disabled}
 		>
 			{disabled ? <Spinner /> : label}
