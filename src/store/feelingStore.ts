@@ -1,4 +1,4 @@
 import { map } from 'nanostores'
-import { FeelingStore } from '../types'
+import { PromptDataStore } from '../types'
 
-export const feelingStore = map<FeelingStore>({ label: '', text: '' })
+export const feelingStore = map<PromptDataStore>({ label: '', text: '' })

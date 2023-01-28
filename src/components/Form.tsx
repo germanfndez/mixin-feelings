@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react'
-import { useFormFeeling } from '../hooks'
 import { Button } from '../components'
+import { useFormFeeling } from '../hooks'
 
 const FeelingResult = lazy(() => import('./FeelingResult'))
 
 export function Form() {
-	const { feeling, loading, onSubmit, playlist } = useFormFeeling()
+	const { promptData, loading, onSubmit, playlist } = useFormFeeling()
 
 	return (
 		<form
@@ -26,7 +26,7 @@ export function Form() {
 			<Button label='Send Feeling' type='submit' disabled={loading} />
 
 			<Suspense fallback={<></>}>
-				<FeelingResult feelingClassified={feeling.label} existsPlaylist={playlist.length > 0} />
+				<FeelingResult feelingClassified={promptData.label} existsPlaylist={playlist.length > 0} />
 			</Suspense>
 		</form>
 	)

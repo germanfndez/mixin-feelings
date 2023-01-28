@@ -11,7 +11,7 @@ export type Feeling =
 	| 'Nervous'
 	| 'Funny'
 
-export interface FeelingStore {
+export interface PromptDataStore {
 	label: string
 	text: string
 }

@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useFeelingStore, usePlaylistStore } from '../hooks'
+import { usePlaylistStore, usePrompDataStore } from '../hooks'
 import { classifyFeelings } from '../services/cohere'
 import { getPlaylistsByFeeling } from '../services/spotify'
 
 export const useFormFeeling = () => {
-	const [$feeling, feelingStore] = useFeelingStore()
+	const [promptData, setPromptData] = usePrompDataStore()
 	const [$playlist, playlistStore] = usePlaylistStore()
 	const [loading, setLoading] = useState(false)
 
@@ -24,7 +24,7 @@ export const useFormFeeling = () => {
 
 		const { prediction } = feelingClassified.classifications[0]
 
-		feelingStore.set({ text: inputFeeling, label: prediction })
+		setPromptData.set({ text: inputFeeling, label: prediction })
 
 		const playlists = await getPlaylistsByFeeling(prediction)
 
@@ -42,7 +42,7 @@ export const useFormFeeling = () => {
 	}
 
 	return {
-		feeling: $feeling,
+		promptData,
 		playlist: $playlist,
 		loading,
 		onSubmit

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../components'
-import { useFeelingStore } from '../hooks'
+import { usePrompDataStore } from '../hooks'
 import { labels, successPrompt } from '../supabase/functions/prompts'
 
 const PROMPT_TYPE_STATUS = {
@@ -9,15 +9,15 @@ const PROMPT_TYPE_STATUS = {
 }
 
 export const AlertFeedback = () => {
-	const [$feeling] = useFeelingStore()
+	const [promptData] = usePrompDataStore()
 	const [showSelect, setShowSelect] = useState<boolean>(false)
 	const [selectedOption, setSelectedOption] = useState<string>('')
 
 	const handleSuccessPrompt = async (status: 'SUCCESS' | 'FAILED') => {
 		const data =
 			status === PROMPT_TYPE_STATUS.SUCCESS
-				? { ...$feeling }
-				: { label: selectedOption, text: $feeling.text }
+				? { ...promptData }
+				: { label: selectedOption, text: promptData.text }
 		try {
 			await successPrompt(data)
 			// alert('Este boton no hace nada aun')
@@ -44,7 +44,7 @@ export const AlertFeedback = () => {
 			{showSelect && (
 				<select id='feedback-cohere' name='labelOptions' onChange={handleSelect}>
 					{labels
-						.filter((label) => label.toLowerCase() !== $feeling.label)
+						.filter((label) => label.toLowerCase() !== promptData.label)
 						.map((label) => (
 							<option value={label}>{label}</option>
 						))}
