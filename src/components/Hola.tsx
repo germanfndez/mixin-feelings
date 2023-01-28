@@ -11,9 +11,13 @@ type playlist = {
 	href: string
 }
 
+const INITIAL_INPUT_STATE = {
+	textarea: ''
+}
+
 export default function Hola(): JSX.Element {
-	const [loading, setLoading] = useState(false)
-	const [input, setInput] = useState<{ textarea: string | number }>({ textarea: '' })
+	const [loading, setLoading] = useState<boolean>(false)
+	const [input, setInput] = useState<{ textarea: string | number }>(INITIAL_INPUT_STATE)
 	const [feeling, setFeeling] = useState<string>('')
 
 	const [playlist, setPlaylist] = useState<playlist[] | null>(null)
@@ -39,8 +43,10 @@ export default function Hola(): JSX.Element {
 	}
 
 	const handleTextArea = ({ target }: React.ChangeEvent<HTMLTextAreaElement>) => {
-		console.log({ ...input, [target.name]: target.value })
-		setInput({ ...input, [target.name]: target.value })
+		setInput({ 
+			...input,
+			[target.name]: target.value
+		})
 	}
 
 	return (
@@ -73,28 +79,23 @@ export default function Hola(): JSX.Element {
 			)}
 			<div className='border border-red-400 flex gap-4'>
 				{playlist &&
-					playlist.map(({ name, href, images }: playlist) => {
+					playlist.map(({ id, name, href, images }: playlist) => {
 						return (
-							<div>
-								<a href={href}>{name}</a>
-								<img src={images[0].url} alt='' />
-							</div>
+							<>
+								<div key={id}>
+									<a href={href}>{name}</a>
+									<img className='aspect-square object-cover' src={images[0].url} alt={name} />
+								</div>
+								<div>
+									<button
+										onClick={() => successPrompt({ label: feeling, text: input.textarea })}
+									>	
+										Good
+									</button>
+								</div>
+							</>
 						)
 					})}
-			</div>
-			<div>
-				{playlist && (
-					<button
-						onClick={() => {
-							successPrompt({
-								label: feeling,
-								text: input.textarea
-							})
-						}}
-					>
-						Good
-					</button>
-				)}
 			</div>
 		</form>
 	)
