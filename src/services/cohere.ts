@@ -7,21 +7,26 @@ const COHERE_API_KEY = import.meta.env.PUBLIC_COHERE_API_KEY
 
 const examples: Example[] = await getPromptsData()
 
-export const classifyFeelings = async (text): Promise<CohereResponse> => {
-	const request = await fetch(ENDPOINT, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Accept: 'application/json',
-			Authorization: `BEARER ${COHERE_API_KEY}`,
-			'Cohere-Version': '2022-12-06'
-		},
-		body: JSON.stringify({
-			inputs: [text],
-			examples,
-			truncate: 'END'
+export const classifyFeelings = async (text: string): Promise<CohereResponse> => {
+	try {
+		const request = await fetch(ENDPOINT, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				Authorization: `BEARER ${COHERE_API_KEY}`,
+				'Cohere-Version': '2022-12-06'
+			},
+			body: JSON.stringify({
+				inputs: [text],
+				examples,
+				truncate: 'END'
+			})
 		})
-	})
-	const data = await request.json()
-	return data
+		const data = await request.json()
+		return data
+	} catch (error) {
+		console.log(error)
+		return null
+	}
 }
