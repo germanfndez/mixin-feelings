@@ -1,4 +1,15 @@
 ---
+import '@fontsource/montserrat/200.css'
+import '@fontsource/montserrat/200-italic.css'
+import '@fontsource/montserrat/400.css'
+import '@fontsource/montserrat/400-italic.css'
+import '@fontsource/montserrat/600.css'
+import '@fontsource/montserrat/600-italic.css'
+import '@fontsource/montserrat/800.css'
+import '@fontsource/montserrat/800-italic.css'
+import '@fontsource/montserrat/900.css'
+import '@fontsource/montserrat/900-italic.css'
+
 export interface Props {
 	title: string
 }
@@ -15,12 +26,42 @@ const { title } = Astro.props
 		<meta name='generator' content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class='bg-slate-800 text-white flex flex-col items-center gap-5 justify-between min-h-screen'>
+	<body
+		class='bg-slate-800 text-white flex flex-col items-center gap-5 justify-between min-h-screen'
+	>
 		<slot />
 	</body>
 </html>
 <style is:global>
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'Montserrat', system-ui, sans-serif;
+	}
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translate3d(0, 100%, 0);
+		}
+		to {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	.fadeInUp {
+		animation: fadeInUp 0.5s linear;
+		animation-delay: 0.6s;
+		animation-fill-mode: backwards;
+	}
+
+	.transition-custom {
+		transition: all 0.5s linear;
+	}
+
+	.text-color-custom {
+		background-image: linear-gradient(#fff 25%, #9c9c9c);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		line-height: 4.5rem;
 	}
 </style>

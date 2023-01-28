@@ -10,3 +10,9 @@ export type Feeling =
 	| 'Enamored'
 	| 'Nervous'
 	| 'Funny'
+
+
+export interface FeelingStore {
+	label: string
+	text: string
+}
