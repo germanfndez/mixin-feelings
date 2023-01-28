@@ -9,3 +9,4 @@ export type Feeling =
 	| 'Horror'
 	| 'Enamored'
 	| 'Nervous'
+	| 'Funny'

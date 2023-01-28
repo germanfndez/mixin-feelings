@@ -1,11 +1,7 @@
 import playlistjson from '../data/playlist.json'
 
-const PLAYLIST = {
-	Sad: ['Sad', 'Sad2', 'Sad3', 'Sad4']
-}
-
 function getRandomPlaylistId(feeling) {
-	const playlists = PLAYLIST[feeling]
+	const playlists = playlistjson[feeling].map(playlist => playlist.name)
 
 	const randomPlaylists = playlists
 		.sort(() => 0.5 - Math.random())
@@ -17,7 +13,7 @@ function getRandomPlaylistId(feeling) {
 			return [...ac, cc]
 		}, [])
 
-	return playlistjson
+	return playlistjson[feeling]
 		.filter((playlist) => randomPlaylists.includes(playlist.name))
 		.map((playlist) => playlist.id)
 }
@@ -28,8 +24,8 @@ export async function getPlaylistsByFeeling(feeling) {
 		return fetch(`https://spotify23.p.rapidapi.com/playlist/?id=${id}`, {
 			method: 'GET',
 			headers: {
-				'X-RapidAPI-Key': '7343fb580emsh621414b29c43dc2p1af5c9jsn036a8d9d561d',
-				'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+				'X-RapidAPI-Key': import.meta.env.PUBLIC_RAPIDAPI_KEY,
+				'X-RapidAPI-Host': import.meta.env.PUBLIC_RAPIDAPI_HOST
 			}
 		})
 	})
