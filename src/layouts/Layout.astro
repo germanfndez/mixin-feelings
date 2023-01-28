@@ -1,15 +1,4 @@
 ---
-import '@fontsource/montserrat/200.css'
-import '@fontsource/montserrat/200-italic.css'
-import '@fontsource/montserrat/400.css'
-import '@fontsource/montserrat/400-italic.css'
-import '@fontsource/montserrat/600.css'
-import '@fontsource/montserrat/600-italic.css'
-import '@fontsource/montserrat/800.css'
-import '@fontsource/montserrat/800-italic.css'
-import '@fontsource/montserrat/900.css'
-import '@fontsource/montserrat/900-italic.css'
-
 export interface Props {
 	title: string
 }
@@ -24,6 +13,14 @@ const { title } = Astro.props
 		<meta name='viewport' content='width=device-width' />
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='generator' content={Astro.generator} />
+
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
+			rel='stylesheet'
+		/>
+
 		<title>{title}</title>
 	</head>
 	<body
@@ -34,7 +31,6 @@ const { title } = Astro.props
 </html>
 <style is:global>
 	html {
-		font-family: 'Montserrat', system-ui, sans-serif;
 	}
 	@keyframes fadeInUp {
 		from {
