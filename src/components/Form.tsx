@@ -10,7 +10,7 @@ export function Form() {
 	return (
 		<form
 			onSubmit={onSubmit}
-			className='flex flex-col gap-5 relative lg:w-[600px] w-full'
+			className='flex flex-col gap-5 mt-10 relative lg:w-[600px] w-full'
 		>
 			<h1 className='relative z-50 text-[42px] font-bold text-center'>
 				Tell me, <span className='text-mixin-100'>how</span> was your <span className='text-mixin-100'>day</span>?
