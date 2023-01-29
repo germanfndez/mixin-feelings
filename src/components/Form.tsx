@@ -10,24 +10,31 @@ export function Form() {
 	return (
 		<form
 			onSubmit={onSubmit}
-			className={'flex flex-col gap-5 relative transition-custom lg:w-[600px] w-full'}
+			className='flex flex-col gap-5 relative lg:w-[600px] w-full'
 		>
-			<label htmlFor='feeling' className='font-semibold'>
-				Tell me, how was your day?
-			</label>
+			<h1 className='text-[42px] font-bold text-center'>
+				Tell me, <span className='text-mixin-100'>how</span> was your <span className='text-mixin-100'>day</span>?
+			</h1>
+			
+			<div className='h-44'>
+				<div className='relative h-full'>
+					<textarea
+						id='feeling'
+						className='focus:animate-visual absolute z-10 left-0 top-0 bottom-0 right-0 text-mixin-300 resize-none w-full h-full p-5 rounded-md font-semibold bg-mixin-500 outline-none'
+						name='inputFeeling'
+						placeholder='...'
+						disabled={loading}
+					/>
+					<div className='absolute rounded-md h-44 w-full bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-40 -left-6 top-5' />
+				</div>
+			</div>
 
-			<textarea
-				id='feeling'
-				className='text-black resize-none w-full h-44 p-5 rounded-md font-semibold'
-				name='inputFeeling'
-				placeholder='...'
-				disabled={loading}
+			<Button className='relative mt-8' label='Send Feeling' type='submit' disabled={loading} />
+
+			<FeelingResult
+				feelingClassified={promptData.label}
+				existsPlaylist={playlist.length > 0}
 			/>
-			<Button label='Send Feeling' type='submit' disabled={loading} />
-
-			<Suspense fallback={<></>}>
-				<FeelingResult feelingClassified={promptData.label} existsPlaylist={playlist.length > 0} />
-			</Suspense>
 		</form>
 	)
 }

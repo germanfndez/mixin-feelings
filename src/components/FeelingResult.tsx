@@ -1,6 +1,3 @@
-import arrow from '../assets/84339-arrow-down.json'
-import Lottie from 'lottie-react'
-
 interface Props {
 	feelingClassified: string
 	existsPlaylist: boolean
@@ -10,24 +7,22 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 	if (!feelingClassified) return null
 
 	return (
-		<div className='text-2xl text-white p-3 bg-slate-800 lg:w-[550px] w-full m-auto relative'>
+		<div className='inline-block bg-[length:400%_400%] p-10 rounded-md text-2xl bg-gradient-to-r from-mixin-100 to-[#c5fa70] via-[#e0f0c7]'>
 			{existsPlaylist ? (
 				<>
-					<p className='fadeInUp text-center '>
-						So if you are feeling
-						<span className='lowercase font-bold'> {feelingClassified}</span> today. <br />
-						<span className=' font-bold'>
-							You might want to listen to these playlists we selected for you.
+					<div className='flex flex-col gap-4'>
+						<span>
+							So if you are feeling{' '}
+							<span className="font-bold underline">{feelingClassified.toUpperCase() || 'sad'}</span>
+							{' '} today.
 						</span>
-					</p>
-					<Lottie
-						animationData={arrow}
-						loop={2}
-						className='w-1/12 lg:block hidden absolute -right-12 -top-5 -rotate-[120deg] z-50'
-					/>
+						<span className='font-bold'>
+							You might want to listen to these playlists we selected for you:
+						</span>
+					</div>
 				</>
 			) : (
-				<p className='fadeInUp text-center '>
+				<p className=''>
 					You are feeling <span className='lowercase font-bold'>{feelingClassified}</span> today.{' '}
 					<br />
 				</p>
