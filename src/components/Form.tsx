@@ -25,8 +25,8 @@ export function Form() {
 						placeholder='...'
 						disabled={loading}
 					/>
-					<div className="absolute -top-40 -right-10 w-[500px] h-[500px] filter blur-xl opacity-40 bg-mixin-100 rounded-full mix-blend-multiply animate-blob animation-delay-4000" />
-    			<div className="absolute -top-20 -left-10 w-[500px] h-[500px] filter blur-xl opacity-40 bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000" />
+					<div className="absolute -top-40 right-0 w-[500px] h-[500px] filter blur-xl opacity-40 bg-mixin-100 rounded-full mix-blend-multiply animate-blob animation-delay-4000" />
+    			<div className="absolute -top-20 left-0 w-[500px] h-[500px] filter blur-xl opacity-40 bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000" />
 					<div className='absolute rounded-md h-44 w-full bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-40 -left-6 top-5' />
 				</div>
 			</div>
