@@ -12,7 +12,7 @@ type Track = {
     }
 }
 
-async function fetchAndPlay (id: string) {
+async function fetchAndPlay (id: string): Promise<Track[]> {
     const { 2: trackId } = id.split(':')
     const res = await fetch(`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${trackId}&offset=0&limit=1`, {
         method: 'GET',
@@ -21,7 +21,7 @@ async function fetchAndPlay (id: string) {
             'X-RapidAPI-Host': `${import.meta.env.PUBLIC_RAPIDAPI_HOST}`
         }
     })
-    const { items }: { items: Track[] } = await res.json()
+    const { items } = await res.json() as { items:  Track[] }
     return items
 }
 
@@ -40,7 +40,7 @@ export function PlaylistCard ({ images, name, owner, uri }: Playlist) {
             return
         }
 
-        const tracks = await fetchAndPlay(uri) as Track[]
+        const tracks = await fetchAndPlay(uri)
         
         tracks.forEach(({ track }) => {
             let audio = new Audio(track.preview_url)
@@ -50,13 +50,12 @@ export function PlaylistCard ({ images, name, owner, uri }: Playlist) {
             setPlaying(true)
 
             audio.addEventListener('timeupdate', () => {
-                const current: number = Math.round(audio.currentTime);
-                const duration: number = Math.round(audio.duration);
-                console.log({ duration, current })
+                const current: number = Math.round(audio.currentTime)
+                const duration: number = Math.round(audio.duration)
                 if (current === duration) {
                     setPlaying(false)
                 }
-            });
+            })
         })
     }
 	return (
