@@ -14,8 +14,6 @@ export const useFormFeeling = () => {
 		const form = e.target as HTMLFormElement
 		const { inputFeeling } = Object.fromEntries(new FormData(form)) as { inputFeeling: string }
 
-		if (inputFeeling.trim().length <= 0) return resetState(form, 'Field is required')
-
 		setLoading(true)
 
 		const feelingClassified = await classifyFeelings(inputFeeling.trim())

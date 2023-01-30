@@ -17,6 +17,7 @@ export function Form() {
 			<div className='h-44'>
 				<div className='relative h-full'>
 					<textarea
+						required
 						id='feeling'
 						className='focus:animate-visual absolute z-20 left-0 top-0 bottom-0 right-0 text-mixin-400 resize-none w-full h-full p-5 rounded-md font-semibold outline-none'
 						name='inputFeeling'
