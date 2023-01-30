@@ -3,4 +3,8 @@ export interface Playlist {
 	name: string
 	images: any[]
 	href: string
+	uri?: string
+	owner: {
+		display_name: string
+	}
 }
