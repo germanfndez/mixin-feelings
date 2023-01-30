@@ -1,10 +1,11 @@
 ---
-import { Footer, Title, MainContent } from '../components'
+import { Footer, MainContent } from '../components'
+import Header from '../components/Header.svelte'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title='Mixin Feelings.'>
-	<Title />
+	<Header client:visible />
 	<MainContent client:visible />
 	<Footer />
 </Layout>
