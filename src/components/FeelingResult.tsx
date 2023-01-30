@@ -1,3 +1,5 @@
+import { AlertFeedback } from './AlertFeedback'
+
 interface Props {
 	feelingClassified: string
 	existsPlaylist: boolean
@@ -10,7 +12,7 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 		<div className='relative inline-block bg-[length:400%_400%] p-10 rounded-md text-2xl bg-gradient-to-r from-mixin-100 to-[#c5fa70] via-[#e0f0c7]'>
 			{existsPlaylist ? (
 				<>
-					<div className='flex flex-col gap-4'>
+					<div className='relative flex flex-col gap-4'>
 						<span>
 							So if you are feeling{' '}
 							<span className='font-bold underline'>
@@ -21,6 +23,7 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 						<span className='font-bold'>
 							You might want to listen to these playlists we selected for you:
 						</span>
+						<AlertFeedback />
 					</div>
 				</>
 			) : (

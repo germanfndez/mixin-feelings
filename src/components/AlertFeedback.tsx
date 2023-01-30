@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Button } from '../components'
 import { usePrompDataStore } from '../hooks'
 import { labels, successPrompt } from '../supabase/functions/prompts'
+import CloseIcon from './shared/CloseIcon'
+import HearthIcon from './shared/HearthIcon'
 
 const PROMPT_TYPE_STATUS = {
 	SUCCESS: 'SUCCESS',
@@ -32,15 +33,14 @@ export const AlertFeedback = () => {
 	}
 
 	return (
-		<div className='absolute top-0 bg-black p-5 rounded-md flex flex-col gap-5'>
-			<p>was this result useful to you?</p>
-			{!showSelect && (
-				<Button label='Yes' onClick={() => handleSuccessPrompt('SUCCESS')} className='w-full' />
-			)}
-			{!showSelect && <Button label='No' onClick={() => setShowSelect(true)} className='w-full' />}
-			{showSelect && (
-				<Button label='Enviar' onClick={() => handleSuccessPrompt('FAILED')} className='w-full' />
-			)}
+		<div className='absolute flex gap-2 -bottom-6 -right-2'>
+			<span className='text-sm'>was this result useful to you:</span>
+			<button onClick={() => handleSuccessPrompt('SUCCESS')}>
+				<HearthIcon className='hover:text-red-500' />
+			</button>
+			<button onClick={() => handleSuccessPrompt('FAILED')}>
+				<CloseIcon className='hover:text-black' />
+			</button>
 			{showSelect && (
 				<select id='feedback-cohere' name='labelOptions' onChange={handleSelect}>
 					{labels
