@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import type { Playlist } from '../types'
 import ArrowIcon from './shared/ArrowIcon'
 import PauseIcon from './shared/PauseIcon'
-import { AlertFeedback } from './AlertFeedback'
 
 type Track = {
 	track: {
@@ -102,7 +101,6 @@ export const PlayList = () => {
 					<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
 				</Fragment>
 			))}
-			{$playlist.length > 0 && <AlertFeedback />}
 		</section>
 	)
 }
