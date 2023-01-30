@@ -28,8 +28,14 @@ module.exports = {
 			},
 			keyframes: {
 				visual: {
-					'0%': { filter: 'drop-shadow(0 0 2px #6c38ff6b) drop-shadow(0 0 4px #6c38ff6b) drop-shadow(0 0 6px #6c38ff6b)' },
-					'50%': { filter: 'drop-shadow(0 0 3px #6c38ff6b) drop-shadow(0 0 6px #6c38ff6b) drop-shadow(0 0 9px #6c38ff6b)' }
+					'0%': {
+						filter:
+							'drop-shadow(0 0 2px #6c38ff6b) drop-shadow(0 0 4px #6c38ff6b) drop-shadow(0 0 6px #6c38ff6b)'
+					},
+					'50%': {
+						filter:
+							'drop-shadow(0 0 3px #6c38ff6b) drop-shadow(0 0 6px #6c38ff6b) drop-shadow(0 0 9px #6c38ff6b)'
+					}
 				},
 				blob: {
 					'0%': { transform: 'scale(1)' },

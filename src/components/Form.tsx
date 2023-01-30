@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy } from 'react'
 import { Button } from '../components'
 import { useFormFeeling } from '../hooks'
 
@@ -8,14 +8,12 @@ export function Form() {
 	const { promptData, loading, onSubmit, playlist } = useFormFeeling()
 
 	return (
-		<form
-			onSubmit={onSubmit}
-			className='flex flex-col gap-5 mt-10 relative lg:w-[600px] w-full'
-		>
+		<form onSubmit={onSubmit} className='flex flex-col gap-5 mt-10 relative lg:w-[600px] w-full'>
 			<h1 className='relative z-50 text-[42px] font-bold text-center'>
-				Tell me, <span className='text-mixin-100'>how</span> was your <span className='text-mixin-100'>day</span>?
+				Tell me, <span className='text-mixin-100'>how</span> was your{' '}
+				<span className='text-mixin-100'>day</span>?
 			</h1>
-			
+
 			<div className='h-44'>
 				<div className='relative h-full'>
 					<textarea
@@ -24,18 +22,15 @@ export function Form() {
 						name='inputFeeling'
 						placeholder='...'
 					/>
-					<div className="absolute -top-40 -right-5 w-[500px] h-[500px] filter blur-xl opacity-60 bg-mixin-100 rounded-full mix-blend-multiply animate-blob animation-delay-4000" />
-    			<div className="absolute -top-20 -left-5 w-[500px] h-[500px] filter blur-xl opacity-60 bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000" />
+					<div className='absolute -top-40 -right-5 w-[500px] h-[500px] filter blur-xl opacity-60 bg-mixin-100 rounded-full mix-blend-multiply animate-blob animation-delay-4000' />
+					<div className='absolute -top-20 -left-5 w-[500px] h-[500px] filter blur-xl opacity-60 bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000' />
 					<div className='absolute z-10 rounded-[20px] h-44 w-full bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-40 -left-6 top-5' />
 				</div>
 			</div>
 
 			<Button className='relative mt-8' label='Send Feeling' type='submit' disabled={loading} />
 
-			<FeelingResult
-				feelingClassified={promptData.label}
-				existsPlaylist={playlist.length > 0}
-			/>
+			<FeelingResult feelingClassified={promptData.label} existsPlaylist={playlist.length > 0} />
 		</form>
 	)
 }

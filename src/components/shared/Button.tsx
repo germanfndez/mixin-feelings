@@ -19,9 +19,7 @@ export function Button({
 			aria-label='Button'
 			type={type}
 			className={`grid ${
-				disabled
-					? 'grid-cols-3 bg-mixin-100'
-					: 'place-items-center bg-mixin-200 hover:bg-mixin-100'
+				disabled ? 'grid-cols-3 bg-mixin-100' : 'place-items-center bg-mixin-200 hover:bg-mixin-100'
 			}  h-11 rounded-md text-mixin-300 font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none ${className}`}
 			disabled={disabled}
 		>

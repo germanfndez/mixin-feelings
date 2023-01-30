@@ -13,8 +13,10 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 					<div className='flex flex-col gap-4'>
 						<span>
 							So if you are feeling{' '}
-							<span className="font-bold underline">{feelingClassified.toUpperCase() || 'sad'}</span>
-							{' '} today.
+							<span className='font-bold underline'>
+								{feelingClassified.toUpperCase() || 'sad'}
+							</span>{' '}
+							today.
 						</span>
 						<span className='font-bold'>
 							You might want to listen to these playlists we selected for you:
