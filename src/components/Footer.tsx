@@ -1,6 +1,20 @@
+import { useEffect, useState } from 'react'
 import GithubIcon from './shared/GitHubIcon'
 
+type Contributor = {
+	html_url: string
+	avatar_url: string
+}
+
 export const Footer = () => {
+	const [contributors, setContributors] = useState<Contributor[]>([])
+
+	useEffect(() => {
+		fetch('https://api.github.com/repos/duxianwei520/react/contributors')
+			.then((response) => response.json())
+			.then((data) => setContributors(data))
+	}, [])
+
 	return (
 		<>
 			<section className='py-12 flex flex-col gap-5 w-full px-20 bg-[#181818ba]'>
@@ -13,27 +27,13 @@ export const Footer = () => {
 					entirely on Github.
 				</p>
 				<div className='flex gap-4'>
-					<a className='hover:opacity-80' href='https://github.com/felipetodev' target='_blank'>
-						<img
-							className='w-14 h-14 rounded-full'
-							src='https://unavatar.io/github/felipetodev'
-							alt='user'
-						/>
-					</a>
-					<a className='hover:opacity-80' href='https://github.com/Germancitoz' target='_blank'>
-						<img
-							className='w-14 h-14 rounded-full'
-							src='https://unavatar.io/github/Germancitoz'
-							alt='user'
-						/>
-					</a>
-					<a className='hover:opacity-80' href='https://github.com/Franklin361' target='_blank'>
-						<img
-							className='w-14 h-14 rounded-full'
-							src='https://unavatar.io/github/Franklin361'
-							alt='user'
-						/>
-					</a>
+					{contributors.map(({ html_url, avatar_url }, i) => {
+						return (
+							<a className='hover:opacity-80' href={html_url} target='_blank' key={i}>
+								<img className='w-14 h-14 rounded-full' src={avatar_url} alt='contributor' />
+							</a>
+						)
+					})}
 				</div>
 				<p className='text-1xl'>
 					Contributors can help fix bugs and implement new features in CodeImage.
