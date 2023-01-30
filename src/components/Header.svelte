@@ -16,16 +16,20 @@
 	})
 </script>
 
-<header class="p-8 b flex justify-around items-center gap-4">
+<header class="py-8 px-20 b flex justify-between items-center gap-4">
 	<h1 class="text-3xl font-bold md:text-5xl sm:text-4xl ">Mixin Feelings</h1>
 	<div class="flex">
 		<a
 			href="https://github.com/Germancitoz/mixin-feelings"
+			target="_blank"
+			rel="noopener noreferrer"
 			class="flex justify-center items-center px-3 py-2 gap-1 border-2 border-[#252525] hover:border-mixin-100  rounded-l-xl transition-colors text-sm"
 			><GithubIcon /> <GithubStar /> Star
 		</a>
 		<a
 			href="https://github.com/Germancitoz/mixin-feelings/stargazers"
+			target="_blank"
+			rel="noopener noreferrer"
 			class="px-3 py-2 gap-1 border-2 bg-zinc-900 border-[#252525] hover:border-mixin-100 rounded-r-xl  transition-colors text-sm"
 			>{stars}</a
 		>
