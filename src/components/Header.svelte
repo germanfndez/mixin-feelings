@@ -16,8 +16,10 @@
 	})
 </script>
 
-<header class="py-8 px-20 b flex justify-between items-center gap-4">
-	<h1 class="text-3xl font-bold md:text-5xl sm:text-4xl ">Mixin Feelings</h1>
+<header
+	class="sticky top-0 z-50 backdrop-blur-xl w-full py-4 px-20 b flex justify-between items-center gap-4"
+>
+	<h1 class="text-2xl font-bold md:text-3xl">Mixin Feelings</h1>
 	<div class="flex">
 		<a
 			href="https://github.com/Germancitoz/mixin-feelings"
