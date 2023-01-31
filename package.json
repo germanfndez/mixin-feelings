@@ -19,6 +19,7 @@
     "@astrojs/tailwind": "^3.0.0",
     "@fontsource/montserrat": "^4.5.14",
     "@nanostores/react": "^0.4.1",
+    "@radix-ui/react-toast": "^1.1.2",
     "@supabase/supabase-js": "^2.5.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",

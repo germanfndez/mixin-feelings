@@ -10,11 +10,12 @@ export const useFormFeeling = () => {
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		setLoading(true)
 
 		const form = e.target as HTMLFormElement
 		const { inputFeeling } = Object.fromEntries(new FormData(form)) as { inputFeeling: string }
 
-		setLoading(true)
+		if (inputFeeling.trim().length <= 0) return resetState(form, 'Field is required')
 
 		const feelingClassified = await classifyFeelings(inputFeeling.trim())
 
