@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, lazy, Suspense, useState } from 'react'
 import { usePlaylistStore } from '../hooks'
 import clsx from 'clsx'
 import type { Playlist } from '../types'
@@ -94,13 +94,29 @@ export const PlayList = () => {
 	const [$playlist] = usePlaylistStore()
 
 	return (
-		<section className='relative flex gap-8 my-36'>
-			{$playlist?.map((playlist) => (
-				<Fragment key={playlist.uri}>
-					<PlaylistCard {...playlist} />
-					<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
-				</Fragment>
-			))}
-		</section>
+		<>
+			{$playlist?.length > 0 && <AnimatedArrow />}
+			<section className='relative flex gap-8 mb-36 '>
+				{
+					$playlist?.map((playlist) => (
+						<Fragment key={playlist.uri}>
+							<PlaylistCard {...playlist} />
+							<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
+						</Fragment>
+					))
+				}
+			</section>
+		</>
+	)
+}
+
+
+const LazyAnimatedArrow = lazy(() => import('./shared/AnimatedArrow'))
+
+export const AnimatedArrow = () => {
+	return (
+		<Suspense fallback={<></>}>
+			<LazyAnimatedArrow />
+		</Suspense>
 	)
 }

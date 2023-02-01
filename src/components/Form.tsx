@@ -29,10 +29,17 @@ export function Form() {
 
 			<Button className='relative mt-8' label='Send Feeling' type='submit' disabled={loading} />
 
-			<FeelingResult
-				feelingClassified={promptData.label}
-				existsPlaylist={playlist?.length > 0}
-			/>
+			{
+				!loading &&
+				(
+					<FeelingResult
+						feelingClassified={promptData.label}
+						existsPlaylist={playlist?.length > 0}
+					/>
+
+				)
+
+			}
 		</form>
 	)
 }
