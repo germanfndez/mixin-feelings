@@ -25,7 +25,7 @@
 			href="https://github.com/Germancitoz/mixin-feelings"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="flex justify-center items-center px-3 py-2 gap-1 border-2 border-[#252525] hover:border-mixin-100  rounded-l-xl transition-colors text-sm"
+			class="flex justify-center items-center px-3 py-2 gap-1 border-2 bg-zinc-900 border-[#252525] hover:border-mixin-100  rounded-l-xl transition-colors text-sm"
 			><GithubIcon /> <GithubStar /> Star
 		</a>
 		<a
