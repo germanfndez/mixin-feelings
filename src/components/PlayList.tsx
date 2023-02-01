@@ -96,7 +96,7 @@ export const PlayList = () => {
 	return (
 		<section className='relative flex gap-8 my-36'>
 			{$playlist?.map((playlist) => (
-				<Fragment key={playlist.id}>
+				<Fragment key={playlist.uri}>
 					<PlaylistCard {...playlist} />
 					<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
 				</Fragment>
