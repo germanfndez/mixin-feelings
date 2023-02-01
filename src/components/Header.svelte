@@ -17,9 +17,9 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 backdrop-blur-xl w-full py-4 px-20 b flex justify-between items-center gap-4"
+	class="fixed z-50 backdrop-blur-xl w-full py-4 px-6 sm:px-10 md:px-20 b flex justify-between items-center gap-4"
 >
-	<h1 class="text-2xl font-bold md:text-3xl">Mixin Feelings</h1>
+	<h1 class="text-xl sm:text-2xl font-bold md:text-3xl">Mixin Feelings</h1>
 	<div class="flex">
 		<a
 			href="https://github.com/Germancitoz/mixin-feelings"
@@ -33,7 +33,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			class="px-3 py-2 gap-1 border-2 bg-zinc-900 border-[#252525] hover:border-mixin-100 rounded-r-xl  transition-colors text-sm"
-			>{stars}</a
+			>{stars ?? 1}</a
 		>
 	</div>
 </header>
