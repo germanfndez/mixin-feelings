@@ -1,8 +1,6 @@
-import { lazy } from 'react'
-import { Button } from '../components'
+import { Button, FeelingResult } from '../components'
 import { useFormFeeling } from '../hooks'
 
-const FeelingResult = lazy(() => import('./FeelingResult'))
 
 export function Form() {
 	const { promptData, loading, onSubmit, playlist } = useFormFeeling()
@@ -31,7 +29,10 @@ export function Form() {
 
 			<Button className='relative mt-8' label='Send Feeling' type='submit' disabled={loading} />
 
-			<FeelingResult feelingClassified={promptData.label} existsPlaylist={playlist.length > 0} />
+			<FeelingResult
+				feelingClassified={promptData.label}
+				existsPlaylist={playlist?.length > 0}
+			/>
 		</form>
 	)
 }
