@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { usePrompDataStore } from '../hooks'
 import { labels, successPrompt } from '../supabase/functions/prompts'
+import { customToast } from '../utils'
 import CloseIcon from './shared/CloseIcon'
 import HearthIcon from './shared/HearthIcon'
 
@@ -21,10 +22,9 @@ export const AlertFeedback = () => {
 				: { label: selectedOption, text: promptData.text }
 		try {
 			await successPrompt(data)
-			// alert('Este boton no hace nada aun')
-			alert('Exitoso')
+			customToast({ label: 'Thanks for your feedback!', type: 'success' })
 		} catch (error) {
-			alert('Fallo supabase feedback')
+			customToast({ label: 'We were unable to process your feedback, please try again later.', type: 'error' })
 		}
 	}
 
@@ -35,10 +35,10 @@ export const AlertFeedback = () => {
 	return (
 		<div className='absolute flex gap-2 -bottom-6 -right-2'>
 			<span className='text-sm'>was this result useful to you:</span>
-			<button onClick={() => handleSuccessPrompt('SUCCESS')}>
+			<button type='button' onClick={() => handleSuccessPrompt('SUCCESS')}>
 				<HearthIcon className='hover:text-red-500' />
 			</button>
-			<button onClick={() => handleSuccessPrompt('FAILED')}>
+			<button type='button' onClick={() => handleSuccessPrompt('FAILED')}>
 				<CloseIcon className='hover:text-black' />
 			</button>
 			{showSelect && (

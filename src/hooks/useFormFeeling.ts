@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { usePlaylistStore, usePrompDataStore } from '../hooks'
 import { classifyFeelings } from '../services/cohere'
 import { getPlaylistsByFeeling } from '../services/spotify'
+import { customToast } from '../utils'
 
 export const useFormFeeling = () => {
 	const [promptData, setPromptData] = usePrompDataStore()
@@ -13,6 +14,8 @@ export const useFormFeeling = () => {
 
 		const form = e.target as HTMLFormElement
 		const { inputFeeling } = Object.fromEntries(new FormData(form)) as { inputFeeling: string }
+
+		if (inputFeeling.trim().length <= 0) return resetState(form, 'Field is required')
 
 		setLoading(true)
 
@@ -34,7 +37,7 @@ export const useFormFeeling = () => {
 	}
 
 	const resetState = (form: HTMLFormElement, error?: string) => {
-		if (error) alert(error)
+		if (error) customToast({ label: error, type: 'error' })
 		setLoading(false)
 		form.reset()
 	}
