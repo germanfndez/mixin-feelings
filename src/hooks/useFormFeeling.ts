@@ -31,6 +31,8 @@ export const useFormFeeling = () => {
 
 		if (!playlists) return resetState(form, 'Error al obtener las playlists!')
 
+		window.scroll({ behavior: 'smooth', top: 400 })
+
 		playlistStore.set(playlists)
 
 		resetState(form)
