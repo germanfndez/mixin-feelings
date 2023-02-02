@@ -5,11 +5,11 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title='Mixin Feelings'>
-	<div class="relative overflow-x-hidden w-full h-full before:bg-bg before:absolute before:top-96 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:w-[600px] before:h-[600px] before:blur-3xl before:opacity-20 before:rounded-full">
+	<div
+		class='relative overflow-x-hidden w-full h-full before:bg-bg before:absolute before:top-96 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:w-[600px] before:h-[600px] before:blur-3xl before:opacity-20 before:rounded-full'
+	>
 		<Header client:load />
 		<MainContent client:load />
-		<div class='absolute top-10 right-0 md:right-96 filter blur-xl opacity-60 w-[500px] h-[500px] bg-mixin-100 rounded-full mix-blend-multiply animate-blob !animation-delay-4000' />
-		<div class='absolute top-28 md:top-36 left-0 filter blur-xl opacity-60 md:left-96 w-[500px] h-[500px] bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000' />
 		<Footer client:visible />
 	</div>
 </Layout>

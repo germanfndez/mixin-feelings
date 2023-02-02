@@ -61,32 +61,30 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 		})
 	}
 	return (
-		<>
-			<div className='relative z-10 bg-mixin-500 rounded-md p-4 w-[200px] hover:bg-mixin-hover group'>
-				<div className='relative'>
-					<img
-						className='rounded-md object-cover block'
-						width={180}
-						height={180}
-						src={images[0].url}
-						alt={name}
-					/>
-					<button
-						onClick={handlePlayTrack}
-						className={clsx(
-							'invisible group-hover:visible hover:scale-105 absolute right-2 bottom-2 p-2 bg-mixin-100 rounded-full',
-							{
-								'!visible': playing
-							}
-						)}
-					>
-						{playing ? <PauseIcon /> : <ArrowIcon />}
-					</button>
-				</div>
-				<h4 className='text-mixin-300 mt-2 uppercase'>{name}</h4>
+		<div className='relative z-10 flex flex-row gap-4 sm:flex-col bg-mixin-500 rounded-md p-4 w-full sm:w-[180px] md:w-[200px] hover:bg-mixin-hover group'>
+			<div className='sm:relative'>
+				<img
+					className='aspect-square rounded-md object-cover block min-w-[56px] w-14 h-14 sm:min-w-[150px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] md:h-full'
+					src={images[0].url}
+					alt={name}
+				/>
+				<button
+					onClick={handlePlayTrack}
+					className={clsx(
+						'invisible group-hover:visible hover:scale-105 absolute right-3 bottom-6 sm:right-2 sm:bottom-2 p-2 bg-mixin-100 rounded-full',
+						{
+							'!visible': playing
+						}
+					)}
+				>
+					{playing ? <PauseIcon /> : <ArrowIcon />}
+				</button>
+			</div>
+			<div className='w-full'>
+				<h4 className='text-overflow text-mixin-300 mt-2 uppercase whitespace-normal'>{name}</h4>
 				<span className='text-mixin-300 opacity-50 text-sm'>By {owner.display_name}</span>
 			</div>
-		</>
+		</div>
 	)
 }
 
@@ -96,20 +94,22 @@ export const PlayList = () => {
 	return (
 		<>
 			{$playlist?.length > 0 && <AnimatedArrow />}
-			<section className='relative flex gap-8 mb-36 '>
-				{
-					$playlist?.map((playlist) => (
-						<Fragment key={playlist.uri}>
-							<PlaylistCard {...playlist} />
-							<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
-						</Fragment>
-					))
-				}
+			<section
+				id='playlist-recomendation'
+				className='relative flex flex-col sm:flex-row gap-8 mb-36 '
+			>
+				{$playlist?.map((playlist, index) => (
+					<Fragment key={playlist.uri}>
+						<PlaylistCard {...playlist} />
+						{$playlist.length === index + 1 && (
+							<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[50px] h-[450px] sm:h-[350px] w-[730px] bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-10' />
+						)}
+					</Fragment>
+				))}
 			</section>
 		</>
 	)
 }
-
 
 const LazyAnimatedArrow = lazy(() => import('./shared/AnimatedArrow'))
 

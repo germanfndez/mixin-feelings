@@ -1,12 +1,11 @@
 import { Button, FeelingResult } from '../components'
 import { useFormFeeling } from '../hooks'
 
-
 export function Form() {
 	const { promptData, loading, onSubmit, playlist } = useFormFeeling()
 
 	return (
-		<form onSubmit={onSubmit} className='flex flex-col gap-5 mt-10 relative w-full md:w-[600px]'>
+		<form onSubmit={onSubmit} className='relative flex flex-col gap-5 mt-10 w-full md:w-[600px]'>
 			<h1 className='leading-tight relative mb-3 md:mb-4 sm:px-2 md:px-4 z-30 text-4xl sm:text-[50px] md:text-[60px] font-bold text-center'>
 				Tell me, <span className='text-mixin-100'>how</span> was your{' '}
 				<span className='text-mixin-100'>day</span>?
@@ -25,19 +24,18 @@ export function Form() {
 				</div>
 			</div>
 
-			<Button className='relative mt-8' label='Send Feeling' type='submit' disabled={loading} />
+			<Button
+				className='relative z-20 mt-8'
+				label='Send Feeling'
+				type='submit'
+				disabled={loading}
+			/>
 
-			{
-				!loading &&
-				(
-					<FeelingResult
-						feelingClassified={promptData.label}
-						existsPlaylist={playlist?.length > 0}
-					/>
-
-				)
-
-			}
+			{!loading && (
+				<FeelingResult feelingClassified={promptData.label} existsPlaylist={playlist?.length > 0} />
+			)}
+			<div className='absolute -top-10 sm:-top-20 right-0 md:-right-12 filter blur-xl opacity-60 w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-mixin-100 rounded-full mix-blend-multiply animate-blob !animation-delay-4000' />
+			<div className='absolute top-20 -left-4 filter blur-xl opacity-60 w-[420px] h-[420px] md:w-[500px] md:h-[500px] bg-mixin-200 rounded-full mix-blend-multiply animate-blob animation-delay-2000' />
 		</form>
 	)
 }

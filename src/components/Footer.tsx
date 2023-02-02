@@ -14,7 +14,7 @@ export const Footer = () => {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data?.message) {
-					if (data.message.includes("API rate limit exceeded")) {
+					if (data.message.includes('API rate limit exceeded')) {
 						return setContributors(null)
 					}
 					setContributors(data)
