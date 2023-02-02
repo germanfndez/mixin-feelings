@@ -13,7 +13,6 @@ export const Footer = () => {
 		fetch('https://api.github.com/repos/duxianwei520/react/contributors')
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data)
 				if (data?.message) {
 					if (data.message.includes('API rate limit exceeded')) {
 						return setContributors(null)
