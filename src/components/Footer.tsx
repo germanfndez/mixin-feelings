@@ -33,7 +33,7 @@ export const Footer = () => {
 					Mixin Feelings is an open source project created in a hackathon context, available
 					entirely on Github.
 				</p>
-				<div className='flex flex-wrap gap-4'>
+				<div className='flex flex-wrap gap-4 h-14'>
 					{contributors?.map(({ html_url, avatar_url }, i) => {
 						return (
 							<a className='hover:opacity-80' href={html_url} target='_blank' key={i}>
