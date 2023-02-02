@@ -62,4 +62,12 @@ const { title } = Astro.props
 	.transition-custom {
 		transition: all 0.5s linear;
 	}
+
+	.text-overflow {
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 </style>

@@ -41,7 +41,6 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 		checkingErrorByKey(data as ErrorMessageSpotify[])
 
 		return data
-
 	} catch (error) {
 		console.log(error)
 		return null
@@ -49,9 +48,10 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 }
 
 function checkingErrorByKey(data: ErrorMessageSpotify[]) {
-	const existError = data.find((playlist: Partial<ErrorMessageSpotify>) =>
-		playlist?.message === 'You are not subscribed to this API.' ||
-		playlist?.message === 'Too many requests'
+	const existError = data.find(
+		(playlist: Partial<ErrorMessageSpotify>) =>
+			playlist?.message === 'You are not subscribed to this API.' ||
+			playlist?.message === 'Too many requests'
 	)
-	if (existError) throw new Error(data[0].message);
+	if (existError) throw new Error(data[0].message)
 }
