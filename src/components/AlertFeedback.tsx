@@ -24,7 +24,10 @@ export const AlertFeedback = () => {
 			await successPrompt(data)
 			customToast({ label: 'Thanks for your feedback!', type: 'success' })
 		} catch (error) {
-			customToast({ label: 'We were unable to process your feedback, please try again later.', type: 'error' })
+			customToast({
+				label: 'We were unable to process your feedback, please try again later.',
+				type: 'error'
+			})
 		}
 	}
 
