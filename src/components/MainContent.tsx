@@ -1,4 +1,4 @@
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast'
 import { Form, PlayList } from '../components'
 
 export const MainContent = () => {
@@ -6,7 +6,12 @@ export const MainContent = () => {
 		<main className='relative mt-20 flex flex-col items-center mx-auto px-10 md:px-20 min-h-[600px]'>
 			<Form />
 			<PlayList />
-			<Toaster position='bottom-right' />
+			<Toaster
+				containerStyle={{
+					bottom: 35
+				}}
+				position='bottom-right'
+			/>
 		</main>
 	)
 }
