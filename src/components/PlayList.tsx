@@ -96,7 +96,7 @@ export const PlayList = () => {
 			{$playlist?.length > 0 && <AnimatedArrow />}
 			<section
 				id='playlist-recomendation'
-				className='relative flex flex-col sm:flex-row gap-8 mb-36 '
+				className='relative flex flex-col sm:flex-row gap-8 mb-36 w-full sm:w-auto'
 			>
 				{$playlist?.map((playlist, index) => (
 					<Fragment key={playlist.uri}>
