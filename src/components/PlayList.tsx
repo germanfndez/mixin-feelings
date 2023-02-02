@@ -64,7 +64,7 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 		<div className='relative z-10 flex flex-row gap-4 sm:flex-col bg-mixin-500 rounded-md p-4 w-full sm:w-[180px] md:w-[200px] hover:bg-mixin-hover group'>
 			<div className='sm:relative'>
 				<img
-					className='aspect-square rounded-md object-cover block min-w-[56px] w-14 h-14 sm:min-w-[150px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] md:h-full'
+					className='aspect-square rounded-md object-cover block min-w-[56px] w-14 h-14 sm:min-w-[150px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-full'
 					src={images[0].url}
 					alt={name}
 				/>
