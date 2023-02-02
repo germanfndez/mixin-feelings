@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { Form, PlayList } from '../components'
 
 export const MainContent = () => {
