@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { usePrompDataStore } from '../hooks'
-import { labels, successPrompt } from '../supabase/functions/prompts'
-import { customToast } from '../utils'
+import { successPrompt } from '../supabase/functions/prompts'
+import { customToast, getLabels } from '../utils'
 import CloseIcon from './shared/CloseIcon'
 import HearthIcon from './shared/HearthIcon'
 
@@ -9,6 +9,8 @@ const PROMPT_TYPE_STATUS = {
 	SUCCESS: 'SUCCESS',
 	FAILED: 'FAILED'
 }
+
+const labels = getLabels()
 
 export const AlertFeedback = () => {
 	const [promptData] = usePrompDataStore()
