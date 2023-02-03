@@ -11,6 +11,7 @@ export const customToast = ({ label, type }: Props) => {
 			color: '#FFF',
 			border: '1px solid #6c38ff6b'
 		},
-		duration: 3000
+		duration: 3000,
+		id: 'unique'
 	})
 }

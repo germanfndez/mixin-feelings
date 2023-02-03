@@ -1,27 +1,33 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { usePlaylistStore, usePrompDataStore } from '../hooks'
 import { classifyFeelings } from '../services/cohere'
 import { getPlaylistsByFeeling } from '../services/spotify'
 import { customToast } from '../utils'
 
 export const useFormFeeling = () => {
+
+	const formRef = useRef<HTMLFormElement>(null)
+
 	const [promptData, setPromptData] = usePrompDataStore()
-	const [$playlist, playlistStore] = usePlaylistStore()
+	const [playlist, playlistStore] = usePlaylistStore()
 	const [loading, setLoading] = useState(false)
+
+	useLayoutEffect(() => {
+		(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+	}, [])
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		const form = e.target as HTMLFormElement
-		const { inputFeeling } = Object.fromEntries(new FormData(form)) as { inputFeeling: string }
+		const inputFeeling = getInputText()
 
-		if (inputFeeling.trim().length <= 0) return resetState(form, 'Field is required')
+		if (inputFeeling.length <= 0) return showError('Field is required!')
 
 		setLoading(true)
 
-		const feelingClassified = await classifyFeelings(inputFeeling.trim())
+		const feelingClassified = await classifyFeelings(inputFeeling)
 
-		if (!feelingClassified) return resetState(form, 'Error al clasificar el sentimiento!')
+		if (!feelingClassified) return showError('Error in classifying sentiment!, try later please')
 
 		const { prediction } = feelingClassified.classifications[0]
 
@@ -29,25 +35,40 @@ export const useFormFeeling = () => {
 
 		const playlists = await getPlaylistsByFeeling(prediction)
 
-		if (!playlists) return resetState(form, 'Error al obtener las playlists!')
-
-		window.scroll({ behavior: 'smooth', top: 400 })
+		if (!playlists) return showError('Error getting playlists!, try later please')
 
 		playlistStore.set(playlists)
 
-		resetState(form)
+		handleScrollDown(515)
+
+		setLoading(false)
 	}
 
-	const resetState = (form: HTMLFormElement, error?: string) => {
-		if (error) customToast({ label: error, type: 'error' })
+	const showError = (error: string) => {
+		customToast({ label: error, type: 'error' })
 		setLoading(false)
-		form.reset()
+	}
+
+	const getInputText = () => {
+		const form = formRef.current
+		const { inputFeeling } = Object.fromEntries(new FormData(form)) as { inputFeeling: string }
+		return inputFeeling.trim()
+	}
+
+	const handleScrollDown = (top: number) => window.scroll({ behavior: 'smooth', top })
+
+	const onClearInput = () => {
+		formRef.current.reset();
+		(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+		handleScrollDown(0)
 	}
 
 	return {
 		promptData,
-		playlist: $playlist,
+		playlist,
 		loading,
-		onSubmit
+		formRef,
+		onSubmit,
+		onClearInput
 	}
 }
