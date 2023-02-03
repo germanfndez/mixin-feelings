@@ -19,6 +19,7 @@ jobs:
       - run: npm install
       - run: npm run github:data
       - run: |
-          git config user.name mixin-feelings-bot
+          git config user.name felipetodev
+          git config user.email fe.ossandon.u@gmail.com
           git diff --quiet && git diff --staged --quiet || git commit -am "[bot]: update github data"
           git push origin main
