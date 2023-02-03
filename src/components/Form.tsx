@@ -1,6 +1,7 @@
 import { Button, FeelingResult } from '../components'
 import { useFormFeeling } from '../hooks'
 import CloseIcon from './shared/CloseIcon'
+import clsx from 'clsx'
 
 export function Form() {
 
@@ -18,12 +19,15 @@ export function Form() {
 					<textarea
 						tabIndex={1}
 						id='feeling'
-						className={`focus:animate-visual absolute z-20 left-0 top-0 bottom-0 right-0 text-mixin-400 resize-none w-full h-full p-6 pb-12 rounded-md font-semibold outline-none ${loading ? 'pointer-events-none' : ''}`}
+						className={clsx(
+							'focus:animate-visual absolute z-20 left-0 top-0 bottom-0 right-0 text-mixin-400 resize-none w-full h-full p-6 pb-12 rounded-md font-semibold outline-none', {
+							'pointer-events-none': loading
+						})}
 						name='inputFeeling'
 						placeholder='...'
 					/>
 					<Button
-						className=' z-20 absolute  bottom-3 right-3 transition-all hover:scale-105 disabled:scale-100 flex justify-center items-center gap-1 px-2'
+						className='z-20 absolute  bottom-3 right-3 transition-transform hover:scale-105 disabled:scale-100 flex justify-center items-center gap-1 px-2'
 						disabled={loading}
 						label='clear'
 						onClick={onClearInput}
