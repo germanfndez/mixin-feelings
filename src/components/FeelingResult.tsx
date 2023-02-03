@@ -9,7 +9,7 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 	if (!feelingClassified) return null
 
 	return (
-		<div className='relative z-10 inline-block bg-[length:400%_400%] p-4 sm:p-10 rounded-md text-2xl bg-gradient-to-r from-mixin-100 to-[#c5fa70] via-[#e0f0c7]'>
+		<div className='relative z-10 inline-block bg-[length:400%_400%] p-4 lg:p-10 rounded-md text-2xl bg-gradient-to-r from-mixin-100 to-[#c5fa70] via-[#e0f0c7] '>
 			{existsPlaylist ? (
 				<div className='relative flex flex-col gap-4'>
 					<span>
