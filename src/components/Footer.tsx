@@ -1,27 +1,7 @@
-import { useEffect, useState } from 'react'
 import GithubIcon from './shared/GitHubIcon'
-
-type Contributor = {
-	html_url: string
-	avatar_url: string
-}
+import { contributors } from '../data/github-repo-data.json'
 
 export const Footer = () => {
-	const [contributors, setContributors] = useState<null | Contributor[]>(null)
-
-	useEffect(() => {
-		fetch('https://api.github.com/repos/duxianwei520/react/contributors')
-			.then((response) => response.json())
-			.then((data) => {
-				if (data?.message) {
-					if (data.message.includes('API rate limit exceeded')) {
-						return setContributors(null)
-					}
-				}
-				setContributors(data)
-			})
-	}, [])
-
 	return (
 		<>
 			<section className='py-12 flex flex-col gap-5 w-full px-6 sm:px-10 md:px-20 bg-[#181818ba]'>
@@ -34,10 +14,10 @@ export const Footer = () => {
 					entirely on Github.
 				</p>
 				<div className='flex flex-wrap gap-4 h-14'>
-					{contributors?.map(({ html_url, avatar_url }, i) => {
+					{contributors.map(({ id, login, avatarUrl, htmlUrl }) => {
 						return (
-							<a className='hover:opacity-80' href={html_url} target='_blank' key={i}>
-								<img className='w-14 h-14 rounded-full' src={avatar_url} alt='contributor' />
+							<a key={id} title={login} className='hover:opacity-80' href={htmlUrl} target='_blank'>
+								<img className='w-14 h-14 rounded-full' src={avatarUrl} alt='contributor' />
 							</a>
 						)
 					})}

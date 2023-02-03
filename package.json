@@ -11,7 +11,8 @@
     "astro": "astro",
     "lint": "eslint . --ext .js,.astro,.ts,.tsx,.svelte",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "github:data": "node scripts/github-repo-data.js"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.0",

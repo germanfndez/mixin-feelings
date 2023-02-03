@@ -2,18 +2,9 @@
 	import { onMount } from 'svelte'
 	import GithubIcon from './GithubIcon.svelte'
 	import GithubStar from './GithubStar.svelte'
+	import { repoStars } from '../data/github-repo-data.json'
 
-	let stars = 0
-
-	async function getStars() {
-		const request = await fetch('https://api.github.com/repos/Germancitoz/notis-app/stargazers')
-		const stars = (await request.json()).length
-		return stars
-	}
-
-	onMount(async () => {
-		stars = await getStars()
-	})
+	let stars = repoStars
 </script>
 
 <header
