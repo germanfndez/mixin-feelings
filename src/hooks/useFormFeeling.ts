@@ -60,7 +60,6 @@ export const useFormFeeling = () => {
 	const onClearInput = () => {
 		formRef.current.reset();
 		(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
-		handleScrollDown(0)
 	}
 
 	return {

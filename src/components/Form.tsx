@@ -1,6 +1,6 @@
 import { Button, FeelingResult } from '../components'
 import { useFormFeeling } from '../hooks'
-import CloseIcon from './shared/CloseIcon'
+import BackspaceIcon from './shared/BackspaceIcon'
 import clsx from 'clsx'
 
 export function Form() {
@@ -15,7 +15,7 @@ export function Form() {
 			</h1>
 
 			<div className='h-44'>
-				<div className='relative h-full'>
+				<div className='group relative h-full'>
 					<textarea
 						tabIndex={1}
 						id='feeling'
@@ -27,15 +27,15 @@ export function Form() {
 						placeholder='...'
 					/>
 					<Button
-						className='z-20 absolute  bottom-3 right-3 transition-transform hover:scale-105 disabled:scale-100 flex justify-center items-center gap-1 px-2'
+						className='z-20 absolute bg-mixin-500 group-hover:bg-mixin-hover bottom-3 right-3 transition-transform hover:scale-105 disabled:scale-100 flex justify-center items-center gap-1 px-2'
 						disabled={loading}
-						label='clear'
+						label=''
 						onClick={onClearInput}
 						tabIndex={3}
 						type='button'
 						withSpinner={false}
 					>
-						<CloseIcon className='h-3' />
+						<BackspaceIcon className='w-6 h-6 -ml-[3px]' />
 					</Button>
 
 					<div className='absolute z-10 rounded-[20px] h-44 w-full bg-textarea bg-[length:10px_10px] text-mixin-200 opacity-40 -left-6 top-5' />
