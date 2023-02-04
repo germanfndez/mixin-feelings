@@ -5,13 +5,7 @@ import type { Playlist } from '../types'
 import ArrowIcon from './shared/ArrowIcon'
 import PauseIcon from './shared/PauseIcon'
 
-type Track = {
-	track: {
-		preview_url: string
-	}
-}
-
-async function fetchAndPlay(id: string): Promise<Track[]> {
+async function fetchAndPlay(id: string): Promise<{ preview_url: string }> {
 	const { 2: trackId } = id.split(':')
 	const res = await fetch(
 		`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${trackId}&offset=0&limit=1`,
@@ -23,8 +17,9 @@ async function fetchAndPlay(id: string): Promise<Track[]> {
 			}
 		}
 	)
-	const { items } = (await res.json()) as { items: Track[] }
-	return items
+	const { items } = (await res.json()) as { items: Array<{ track: { preview_url: string }}> }
+	const [{ track }] = items
+	return track
 }
 
 export function PlaylistCard({ images, name, owner, uri }: Playlist) {
@@ -42,10 +37,9 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 			return
 		}
 
-		const tracks = await fetchAndPlay(uri)
+		const trackData = await fetchAndPlay(uri)
+			let audio = new Audio(trackData.preview_url)
 
-		tracks.forEach(({ track }) => {
-			let audio = new Audio(track.preview_url)
 			setTrack(audio)
 			audio.play()
 			audio.volume = 0.1
@@ -58,7 +52,6 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 					setPlaying(false)
 				}
 			})
-		})
 	}
 	return (
 		<div className='relative z-10 flex flex-row gap-4 sm:flex-col bg-mixin-500 rounded-md p-4 w-full sm:w-[180px] md:w-[200px] hover:bg-mixin-hover group'>
@@ -71,9 +64,10 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 				<button
 					onClick={handlePlayTrack}
 					className={clsx(
-						'invisible group-hover:visible hover:scale-105 absolute right-3 bottom-6 sm:right-2 sm:bottom-2 p-2 bg-mixin-100 rounded-full',
+						'group-hover:visible hover:scale-105 absolute right-3 bottom-6 sm:right-2 sm:bottom-2 p-2 bg-mixin-100 rounded-full',
 						{
-							'!visible': playing
+							'invisible': !playing,
+							'visible': playing
 						}
 					)}
 				>
