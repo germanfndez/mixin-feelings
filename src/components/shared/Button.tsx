@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 interface Props {
 	label?: string
 	disabled?: boolean
@@ -9,10 +11,7 @@ interface Props {
 	children?: JSX.Element
 }
 
-export function Button({
-	withSpinner = true,
-	...props
-}: Props) {
+export function Button({ withSpinner = true, ...props }: Props) {
 	return withSpinner ? <ButtonSpinner {...props} /> : <ButtonWithoutSpinner {...props} />
 }
 
@@ -25,16 +24,20 @@ export const ButtonWithoutSpinner = ({
 	tabIndex = 0,
 	children
 }: Omit<Props, 'withSpinner'>) => {
-
 	return (
 		<button
 			aria-label='Button'
-			className={`disabled:hover:cursor-not-allowed disabled:bg-mixin-hover select-none bg-mixin-500 active:bg-mixin-500 hover:bg-mixin-hover text-white p-1 rounded-md ${className} `}
+			className={clsx(
+				'disabled:hover:cursor-not-allowed disabled:bg-mixin-hover select-none bg-mixin-500 active:bg-mixin-500 hover:bg-mixin-hover text-white p-1 rounded-md',
+				className
+			)}
 			disabled={disabled}
 			onClick={onClick}
 			tabIndex={tabIndex}
 			type={type}
-		>{label} {children}</button>
+		>
+			{label} {children}
+		</button>
 	)
 }
 
@@ -46,11 +49,16 @@ export const ButtonSpinner = ({
 	className = '',
 	tabIndex = 0
 }: Omit<Props, 'withSpinner'>) => {
-
 	return (
 		<button
 			aria-label='Button'
-			className={`grid ${disabled ? 'grid-cols-3 bg-mixin-100' : 'place-items-center bg-mixin-200 hover:bg-mixin-100'}  h-11 rounded-md text-mixin-300 font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none ${className}`}
+			className={clsx(
+				'grid place-items-center bg-mixin-200 hover:bg-mixin-100 h-11 rounded-md text-mixin-300 font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none',
+				className,
+				{
+					'grid-cols-3 bg-mixin-100': disabled
+				}
+			)}
 			disabled={disabled}
 			onClick={onClick}
 			tabIndex={tabIndex}
