@@ -1,4 +1,4 @@
- # **Mixing Feelings 🎧** - Co:here [Hackathon](https://discord.com/channels/741237973663612969/1065935439380365322)
+# **Mixing Feelings 🎧** - Co:here [Hackathon](https://discord.com/channels/741237973663612969/1065935439380365322)
 
 Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 
@@ -16,8 +16,8 @@ Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 
 4. Guardar tu feedback en base de datos para entrenar a la IA de **Co:here**.
 
-
 ## **Tecnologías principales** 🧪
+
 - Astro
 - React JS
 - TypeScript
@@ -39,20 +39,24 @@ Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 ```
 
 3. Antes de levantar el servidor de desarrollo necesitas lo siguiente:
-    - Crear un archivo `.env` en la raíz del proyecto y agregar las siguientes variables
-    ```
-    PUBLIC_COHERE_API_KEY=
-    PUBLIC_SPOTIFY_TOKEN=
-    PUBLIC_SUPABASE_URL=
-    PUBLIC_SUPABASE_ANON_KEY=
-    PUBLIC_RAPIDAPI_KEY=
-    PUBLIC_RAPIDAPI_HOST=
-    ```
+
+   - Crear un archivo `.env` en la raíz del proyecto y agregar las siguientes variables
+
+   ```
+   PUBLIC_COHERE_API_KEY=
+   PUBLIC_SPOTIFY_TOKEN=
+   PUBLIC_SUPABASE_URL=
+   PUBLIC_SUPABASE_ANON_KEY=
+   PUBLIC_RAPIDAPI_KEY=
+   PUBLIC_RAPIDAPI_HOST=
+   ```
 
 4. Levanta el servidor de desarrollo.
+
 ```shell
     npm run dev
 ```
+
 &nbsp;
 
 ## **Demostración en vivo ⛓️**
@@ -62,6 +66,7 @@ Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 <br/>
 
 ## **Integrantes del proyecto** 👥
+
 - [Germán Fernández](https://github.com/Germancitoz)
 - [Felipe Ossandon](https://github.com/felipetodev)
 - [Franko Martinez](https://github.com/Franklin361)

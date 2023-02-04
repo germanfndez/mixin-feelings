@@ -4,11 +4,14 @@ import BackspaceIcon from './shared/BackspaceIcon'
 import clsx from 'clsx'
 
 export function Form() {
-
 	const { promptData, loading, onSubmit, onClearInput, playlist, formRef } = useFormFeeling()
 
 	return (
-		<form ref={formRef} onSubmit={onSubmit} className='relative flex flex-col gap-5 mt-10 w-full md:w-[600px]'>
+		<form
+			ref={formRef}
+			onSubmit={onSubmit}
+			className='relative flex flex-col gap-5 mt-10 w-full md:w-[600px]'
+		>
 			<h1 className='leading-tight relative mb-3 md:mb-4 sm:px-2 md:px-4 z-30 text-4xl sm:text-[50px] md:text-[60px] font-bold text-center'>
 				Tell me, <span className='text-mixin-100'>how</span> was your{' '}
 				<span className='text-mixin-100'>day</span>?
@@ -20,9 +23,11 @@ export function Form() {
 						tabIndex={1}
 						id='feeling'
 						className={clsx(
-							'focus:animate-visual absolute z-20 left-0 top-0 bottom-0 right-0 text-mixin-400 resize-none w-full h-full p-6 pb-12 rounded-md font-semibold outline-none', {
-							'pointer-events-none': loading
-						})}
+							'focus:animate-visual absolute z-20 left-0 top-0 bottom-0 right-0 text-mixin-400 resize-none w-full h-full p-6 pb-12 rounded-md font-semibold outline-none',
+							{
+								'pointer-events-none': loading
+							}
+						)}
 						name='inputFeeling'
 						placeholder='...'
 					/>

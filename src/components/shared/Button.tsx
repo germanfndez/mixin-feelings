@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import clsx from 'clsx'
 
 interface Props {
 	label: string
@@ -11,10 +11,7 @@ interface Props {
 	children?: JSX.Element
 }
 
-export function Button({
-	withSpinner = true,
-	...props
-}: Props) {
+export function Button({ withSpinner = true, ...props }: Props) {
 	return withSpinner ? <ButtonSpinner {...props} /> : <ButtonWithoutSpinner {...props} />
 }
 
@@ -27,7 +24,6 @@ export const ButtonWithoutSpinner = ({
 	tabIndex = 0,
 	children
 }: Omit<Props, 'withSpinner'>) => {
-
 	return (
 		<button
 			aria-label='Button'
@@ -39,7 +35,9 @@ export const ButtonWithoutSpinner = ({
 			onClick={onClick}
 			tabIndex={tabIndex}
 			type={type}
-		>{label} {children}</button>
+		>
+			{label} {children}
+		</button>
 	)
 }
 
@@ -51,14 +49,14 @@ export const ButtonSpinner = ({
 	className = '',
 	tabIndex = 0
 }: Omit<Props, 'withSpinner'>) => {
-
 	return (
 		<button
 			aria-label='Button'
 			className={clsx(
-				'grid place-items-center bg-mixin-200 hover:bg-mixin-100 h-11 rounded-md text-mixin-300 font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none', 
-				className, {
-					'grid-cols-3 bg-mixin-100': disabled,
+				'grid place-items-center bg-mixin-200 hover:bg-mixin-100 h-11 rounded-md text-mixin-300 font-bold  duration-[500ms,800ms] disabled:hover:cursor-not-allowed select-none',
+				className,
+				{
+					'grid-cols-3 bg-mixin-100': disabled
 				}
 			)}
 			disabled={disabled}

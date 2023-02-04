@@ -5,7 +5,6 @@ import { getPlaylistsByFeeling } from '../services/spotify'
 import { customToast } from '../utils'
 
 export const useFormFeeling = () => {
-
 	const formRef = useRef<HTMLFormElement>(null)
 
 	const [promptData, setPromptData] = usePrompDataStore()
@@ -13,7 +12,7 @@ export const useFormFeeling = () => {
 	const [loading, setLoading] = useState(false)
 
 	useLayoutEffect(() => {
-		(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+		;(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
 	}, [])
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -58,8 +57,8 @@ export const useFormFeeling = () => {
 	const handleScrollDown = (top: number) => window.scroll({ behavior: 'smooth', top })
 
 	const onClearInput = () => {
-		formRef.current.reset();
-		(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+		formRef.current.reset()
+		;(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
 	}
 
 	return {

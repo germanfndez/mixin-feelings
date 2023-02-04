@@ -40,12 +40,16 @@ export const AlertFeedback = () => {
 	return (
 		<div className='flex gap-1 items-center justify-end lg:p-1 lg:pl-3 pt-4 lg:border-none border-t lg:absolute static lg:-bottom-7 lg:-right-6 select-none lg:bg-black/10 bg-transparent lg:rounded-full rounded-none'>
 			<span className='text-sm'>Was this result useful to you:</span>
-			<button type='button' onClick={() => { }}
+			<button
+				type='button'
+				onClick={() => {}}
 				className='hover:bg-red-500 active:bg-red-600 rounded-full w-7 h-7 grid place-items-center'
 			>
 				<HearthIcon />
 			</button>
-			<button type='button' onClick={() => { }}
+			<button
+				type='button'
+				onClick={() => {}}
 				className='hover:bg-black active:bg-black/70 rounded-full w-7 h-7 grid place-items-center'
 			>
 				<CloseIcon />
