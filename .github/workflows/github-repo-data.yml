@@ -1,24 +1,25 @@
-# name: GitHub repository data
+name: GitHub repository data
 
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     branches:
-#       - main
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+      - main
 
-# jobs:
-#   github-data:
-#     runs-on: ubuntu-22.04
+jobs:
+  github-data:
+    runs-on: ubuntu-22.04
 
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 18
-#       - run: npm install
-#       - run: npm run github:data
-#       - run: |
-#           git config user.name mixin-feelings-bot
-#           git diff --quiet && git diff --staged --quiet || git commit -am "[bot]: update github data"
-#           git push origin main
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run github:data
+      - run: |
+          git config user.name felipetodev
+          git config user.email fe.ossandon.u@gmail.com
+          git diff --quiet && git diff --staged --quiet || git commit -am "[bot]: update github data"
+          git push origin main
