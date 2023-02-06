@@ -1,11 +1,9 @@
-import fetch from 'node-fetch'
-
 export const config = {
   runtime: 'edge',
   regions: ['iad1']
 }
 
-const { PUBLIC_RAPIDAPI_KEY, PUBLIC_RAPIDAPI_HOST } = process.env
+const { PUBLIC_RAPIDAPI_KEY = '', PUBLIC_RAPIDAPI_HOST = '' } = process.env
 
 export default async (req: any, res) => {
   const { id = '' } = req.query
