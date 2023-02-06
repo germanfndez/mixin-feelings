@@ -38,7 +38,7 @@ export const classifyFeelings = async (text: string): Promise<CohereResponse> =>
 
 function checkingErrorByKey(data: Partial<ErrorMessage>) {
 
-	const existError = data?.message.includes('invalid request')
+	const existError = !!data?.message
 
 	if (existError) throw new Error(data?.message)
 }
