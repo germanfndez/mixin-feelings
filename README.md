@@ -2,7 +2,7 @@
 
 Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 
-![cover](https://imgs.search.brave.com/cOmY9J1uxhH7w4uV_rF00I3Si517rT8fzsXjks5tyME/rs:fit:1000:675:1/g:ce/aHR0cDovL21wbWNv/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOC8wMi9wbGFj/ZWhvbGRlci5qcGc)
+![cover-mixin](https://user-images.githubusercontent.com/65827956/217028600-05d3bb38-a5a8-4240-b5d0-cc7e0b961290.png)
 
 <br/>
 
