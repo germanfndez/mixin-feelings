@@ -123,12 +123,12 @@ export const SelectLabel = ({
 				onChange={onChange}
 				id='feedback-cohere'
 				name='labelOption'
-				className=' text-mixin-400 rounded-md h-7  border sm:w-auto w-full'
+				className=' text-mixin-400 rounded-md h-7 lowercase border sm:w-auto w-full'
 			>
 				{labels
 					.filter((label) => label !== currentLabel)
 					.map((label) => (
-						<option className='' key={label} value={label}>
+						<option key={label} value={label}>
 							{label}
 						</option>
 					))}
