@@ -1,3 +1,4 @@
+import { Waveform } from '@uiball/loaders'
 import clsx from 'clsx'
 
 interface Props {
@@ -72,7 +73,12 @@ export const ButtonSpinner = ({
 export const Spinner = () => {
 	return (
 		<>
-			<div className='grid-1 my-auto h-5 w-5 mx-3 border-t-transparent border-solid animate-spin rounded-full border-mixin-300 border-4' />
+			<Waveform
+				size={30}
+				lineWeight={3.5}
+				speed={1}
+				color='white'
+			/>
 			<span className='grid-2 my-auto -mx-1'> Processing ... </span>
 		</>
 	)

@@ -16,7 +16,7 @@ export const Footer = () => {
 				<div className='flex flex-wrap gap-4 min-h-[32px] sm:min-h-[56px] h-full'>
 					{contributors.map(({ id, login, avatarUrl, htmlUrl }) => {
 						return (
-							<a key={id} title={login} className='hover:opacity-80' href={htmlUrl} target='_blank'>
+							<a key={id} title={`@${login}`} className='hover:opacity-80' href={htmlUrl} target='_blank'>
 								<img
 									className='w-8 h-8 sm:w-14 sm:h-14 rounded-full'
 									src={avatarUrl}
