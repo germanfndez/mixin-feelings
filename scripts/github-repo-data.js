@@ -1,10 +1,7 @@
 import { writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
-/**
- * Mock url repos
- */
-const GITHUB_STARGAZERS = 'https://github.com/Germancitoz/mixin-feelings/stargazers'
+const GITHUB_STARGAZERS = 'https://api.github.com/repos/Germancitoz/mixin-feelings/stargazers'
 const GITHUB_CONTRIBUTORS = 'https://api.github.com/repos/Germancitoz/mixin-feelings/contributors'
 
 export async function getGitHubRepoData() {
