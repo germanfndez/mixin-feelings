@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 export const config = {
   runtime: 'edge',
   regions: ['iad1']
