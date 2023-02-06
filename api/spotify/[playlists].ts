@@ -4,10 +4,6 @@ export const config = {
 }
 
 export default async (req: Request) => {
-	// @ts-ignore: Unreachable code error
-	const { PUBLIC_RAPIDAPI_KEY = "", PUBLIC_RAPIDAPI_HOST = "" } = process.env || {}
-	console.log({ PUBLIC_RAPIDAPI_KEY, PUBLIC_RAPIDAPI_HOST })
-
   const { id } = req.body as any
 	const resp = await fetch(
 		`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
