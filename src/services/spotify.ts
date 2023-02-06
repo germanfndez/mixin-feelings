@@ -26,13 +26,7 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 	try {
 		const randomPlaylistId = getRandomPlaylistId(feeling)
 		const requests = randomPlaylistId.map((id) => {
-			return fetch(`https://spotify23.p.rapidapi.com/playlist/?id=${id}`, {
-				method: 'GET',
-				headers: {
-					'X-RapidAPI-Key': `${RAPIDAPI_KEY}`,
-					'X-RapidAPI-Host': `${RAPIDAPI_HOST}`
-				}
-			})
+			return fetch(`/api/spotify/playlists/${id}`)
 		})
 
 		const response = await Promise.all(requests)

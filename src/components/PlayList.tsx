@@ -7,7 +7,7 @@ import PauseIcon from './shared/PauseIcon'
 
 async function fetchAndPlay(id: string): Promise<{ preview_url: string }> {
 	const { 2: trackId } = id.split(':')
-	const res = await fetch(`/api/spotify/playlists/${trackId}`)
+	const res = await fetch(`/api/spotify/tracks/${trackId}`)
 	return await res.json()
 }
 
