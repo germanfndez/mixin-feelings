@@ -7,19 +7,8 @@ import PauseIcon from './shared/PauseIcon'
 
 async function fetchAndPlay(id: string): Promise<{ preview_url: string }> {
 	const { 2: trackId } = id.split(':')
-	const res = await fetch(
-		`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${trackId}&offset=0&limit=1`,
-		{
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Key': `${import.meta.env.PUBLIC_RAPIDAPI_KEY}`,
-				'X-RapidAPI-Host': `${import.meta.env.PUBLIC_RAPIDAPI_HOST}`
-			}
-		}
-	)
-	const { items } = (await res.json()) as { items: Array<{ track: { preview_url: string }}> }
-	const [{ track }] = items
-	return track
+	const res = await fetch(`/api/spotify/playlists/${trackId}`)
+	return await res.json()
 }
 
 export function PlaylistCard({ images, name, owner, uri }: Playlist) {
