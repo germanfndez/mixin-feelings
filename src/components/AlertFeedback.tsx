@@ -3,7 +3,6 @@ import { usePrompDataStore } from '../hooks'
 import { successPrompt } from '../supabase/functions/prompts'
 import { customToast, getLabels } from '../utils'
 import { Button } from './shared/Button'
-import CloseIcon from './shared/CloseIcon'
 import LikeIcon from './shared/LikeIcon'
 import DislikeIcon from './shared/DislikeIcon'
 
