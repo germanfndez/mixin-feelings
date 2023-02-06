@@ -12,7 +12,8 @@
     "lint": "eslint . --ext .js,.astro,.ts,.tsx,.svelte",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write .",
-    "github:data": "node scripts/github-repo-data.js"
+    "github:data": "node scripts/github-repo-data.js",
+    "dev:vercel": "vercel dev"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.0",

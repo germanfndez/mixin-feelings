@@ -4,7 +4,7 @@ export const config = {
 }
 
 export default async (req: Request) => {
-  const { id } = req.body as any
+  const { id = '' } = req.body as any
 	const resp = await fetch(
 		`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
 		{
@@ -18,7 +18,8 @@ export default async (req: Request) => {
 	const { items } = (await resp.json()) as { items: Array<{ track: { preview_url: string }}> }
 	const [{ track }] = items
 
-	return new Response(JSON.stringify(track), {
-		status: 200,
-	})
+	// return new Response(JSON.stringify(track), {
+	// 	status: 200,
+	// })
+	return new Response(`Hello Spotify Playlists ${req.url} I'm now an Edge Function!`)
 }
