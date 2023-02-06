@@ -5,25 +5,22 @@ export const config = {
 
 const { PUBLIC_RAPIDAPI_KEY = '', PUBLIC_RAPIDAPI_HOST = '' } = process.env
 
-export default async (req: any, res) => {
-  const { id = '' } = req.query
+export default async (req: any) => {
+  const { id = '' } = req && req.query || {}
 	
-	try {
-		const resp = await fetch(
-			`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
-			{
-				method: 'GET',
-				headers: {
-					'X-RapidAPI-Key': `${PUBLIC_RAPIDAPI_KEY}`,
-					'X-RapidAPI-Host': `${PUBLIC_RAPIDAPI_HOST}`
-				}
-			}
-		)
-		const { items } = (await resp.json()) as { items: Array<{ track: { preview_url: string }}> }
-		const [{ track }] = items
+		// const resp = await fetch(
+		// 	`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
+		// 	{
+		// 		method: 'GET',
+		// 		headers: {
+		// 			'X-RapidAPI-Key': `${PUBLIC_RAPIDAPI_KEY}`,
+		// 			'X-RapidAPI-Host': `${PUBLIC_RAPIDAPI_HOST}`
+		// 		}
+		// 	}
+		// )
+		// const { items } = (await resp.json()) as { items: Array<{ track: { preview_url: string }}> }
+		// const [{ track }] = items
 	
-		return res.json(track)
-	} catch (error) {
-		return new Response(`Error: ${id} - ${PUBLIC_RAPIDAPI_KEY} - ${PUBLIC_RAPIDAPI_HOST}`);
-	}
+		// return res.json(track)
+	return new Response(`Error: ${id} - ${PUBLIC_RAPIDAPI_KEY} - ${PUBLIC_RAPIDAPI_HOST}`);
 }

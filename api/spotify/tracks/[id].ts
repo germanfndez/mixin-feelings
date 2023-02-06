@@ -3,6 +3,10 @@ export const config = {
   regions: ['iad1'], // only execute this function on iad1
 };
 
-export default (req: Request) => {
-  return new Response(`Hello Spotify Tracks ${req.url} I'm now an Edge Function!`);
+interface IRequest extends Request {
+  query: string
+}
+
+export default (req: IRequest) => {
+  return new Response(`Hello Spotify Tracks ${req.query} I'm now an Edge Function!`);
 };
