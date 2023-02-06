@@ -3,23 +3,21 @@ export const config = {
   regions: ['iad1']
 }
 
-export default async (req: Request) => {
-  const { id = '' } = req.body as any
+export default async (req: any, res) => {
+  const { id = '' } = req.query
+	console.log({id})
 	const resp = await fetch(
 		`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
 		{
 			method: 'GET',
 			headers: {
-				'X-RapidAPI-Key': `${import.meta.env.PUBLIC_RAPIDAPI_KEY}`,
-				'X-RapidAPI-Host': `${import.meta.env.PUBLIC_RAPIDAPI_HOST}`
+				'X-RapidAPI-Key': `${process.env.PUBLIC_RAPIDAPI_KEY}`,
+				'X-RapidAPI-Host': `${process.env.PUBLIC_RAPIDAPI_HOST}`
 			}
 		}
 	)
 	const { items } = (await resp.json()) as { items: Array<{ track: { preview_url: string }}> }
 	const [{ track }] = items
 
-	// return new Response(JSON.stringify(track), {
-	// 	status: 200,
-	// })
-	return new Response(`Hello Spotify Playlists ${req.url} I'm now an Edge Function!`)
+	return res.json(track)
 }
