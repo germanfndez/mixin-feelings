@@ -27,20 +27,20 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 		}
 
 		const trackData = await fetchAndPlay(uri)
-			let audio = new Audio(trackData.preview_url)
+		let audio = new Audio(trackData.preview_url)
 
-			setTrack(audio)
-			audio.play()
-			audio.volume = 0.1
-			setPlaying(true)
+		setTrack(audio)
+		audio.play()
+		audio.volume = 0.1
+		setPlaying(true)
 
-			audio.addEventListener('timeupdate', () => {
-				const current: number = Math.round(audio.currentTime)
-				const duration: number = Math.round(audio.duration)
-				if (current === duration) {
-					setPlaying(false)
-				}
-			})
+		audio.addEventListener('timeupdate', () => {
+			const current: number = Math.round(audio.currentTime)
+			const duration: number = Math.round(audio.duration)
+			if (current === duration) {
+				setPlaying(false)
+			}
+		})
 	}
 	return (
 		<div className='relative z-10 flex flex-row gap-4 sm:flex-col bg-mixin-500 rounded-md p-4 w-full sm:w-[180px] md:w-[200px] hover:bg-mixin-hover group'>
@@ -55,8 +55,8 @@ export function PlaylistCard({ images, name, owner, uri }: Playlist) {
 					className={clsx(
 						'group-hover:visible hover:scale-105 absolute right-3 bottom-6 sm:right-2 sm:bottom-2 p-2 bg-mixin-100 rounded-full',
 						{
-							'invisible': !playing,
-							'visible': playing
+							invisible: !playing,
+							visible: playing
 						}
 					)}
 				>
