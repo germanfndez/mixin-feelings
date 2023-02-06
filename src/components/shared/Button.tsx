@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 interface Props {
-	label: string
+	label?: string
 	disabled?: boolean
 	withSpinner?: boolean
 	type?: 'button' | 'submit'

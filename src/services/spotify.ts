@@ -1,5 +1,5 @@
 import playlistjson from '../data/playlist.json'
-import { ErrorMessageSpotify, Playlist } from '../types'
+import { ErrorMessage, Playlist } from '../types'
 
 const RAPIDAPI_KEY = import.meta.env.PUBLIC_RAPIDAPI_KEY
 const RAPIDAPI_HOST = import.meta.env.PUBLIC_RAPIDAPI_HOST
@@ -38,7 +38,7 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 		const response = await Promise.all(requests)
 		const data = await Promise.all(response.map((res) => res.json()))
 
-		checkingErrorByKey(data as ErrorMessageSpotify[])
+		checkingErrorByKey(data as ErrorMessage[])
 
 		return data
 	} catch (error) {
@@ -47,9 +47,9 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 	}
 }
 
-function checkingErrorByKey(data: ErrorMessageSpotify[]) {
+function checkingErrorByKey(data: ErrorMessage[]) {
 	const existError = data.find(
-		(playlist: Partial<ErrorMessageSpotify>) =>
+		(playlist: Partial<ErrorMessage>) =>
 			playlist?.message === 'You are not subscribed to this API.' ||
 			playlist?.message === 'Too many requests'
 	)

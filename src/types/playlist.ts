@@ -1,4 +1,4 @@
-export interface ErrorMessageSpotify {
+export interface ErrorMessage {
 	message: string
 }
 

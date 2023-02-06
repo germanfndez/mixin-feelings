@@ -12,7 +12,7 @@ export const useFormFeeling = () => {
 	const [loading, setLoading] = useState(false)
 
 	useLayoutEffect(() => {
-		;(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+		; (formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
 	}, [])
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -58,7 +58,7 @@ export const useFormFeeling = () => {
 
 	const onClearInput = () => {
 		formRef.current.reset()
-		;(formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
+			; (formRef.current.querySelector('#feeling') as HTMLTextAreaElement).focus()
 	}
 
 	return {

@@ -1,4 +1,5 @@
 import { getPromptsData } from '../supabase/functions/prompts/index'
+import { ErrorMessage } from '../types'
 import type { CohereResponse } from '../types/cohere'
 import type { Example } from '../types/example'
 
@@ -23,10 +24,22 @@ export const classifyFeelings = async (text: string): Promise<CohereResponse> =>
 				truncate: 'END'
 			})
 		})
+
 		const data = await request.json()
+
+		checkingErrorByKey(data)
+
 		return data
 	} catch (error) {
 		console.log(error)
 		return null
 	}
 }
+
+function checkingErrorByKey(data: Partial<ErrorMessage>) {
+
+	const existError = !!data?.message
+
+	if (existError) throw new Error(data?.message)
+}
+
