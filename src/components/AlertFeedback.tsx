@@ -121,7 +121,7 @@ export const SelectLabel = ({
 	currentLabel
 }: PropsSelectLabel) => {
 	return (
-		<div className='flex sm:flex-row flex-col sm:gap-4 gap-2 sm:items-center justify-end sm:justify-center w-full'>
+		<div className='flex sm:flex-row flex-col sm:gap-4 gap-2 sm:items-center justify-center w-full'>
 			<label htmlFor='feedback-cohere'>Select the option you think is correct</label>
 			<select
 				onChange={onChange}
@@ -137,10 +137,10 @@ export const SelectLabel = ({
 						</option>
 					))}
 			</select>
-			<div className='flex gap-2 items-center justify-center'>
+			<div className='flex gap-2 items-center justify-end sm:justify-center'>
 				<Button
 					label=''
-					className='bg-mixin-500 h-7 text-mixin-300 hover:bg-mixin-hover'
+					className='bg-mixin-500 h-7 text-mixin-300 hover:bg-mixin-hover hover:scale-105 transition-transform'
 					withSpinner={false}
 					onClick={handleSentFeedback}
 				>

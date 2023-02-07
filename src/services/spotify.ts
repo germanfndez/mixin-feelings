@@ -30,6 +30,7 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 		})
 
 		const response = await Promise.all(requests)
+		console.log(response)
 		const data = await Promise.all(response.map((res) => res.json()))
 
 		checkingErrorByKey(data as ErrorMessage[])
