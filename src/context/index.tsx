@@ -30,7 +30,6 @@ export const PlayerProvider: React.FC<Props> = ({ children }) => {
 	const [trackUri, setTrackUri] = useState<string | null>(null)
 
 	async function fetchAndPlay(id: string) {
-		const { 2: trackId } = id.split(':')
 		if (trackData && !playing && trackUri === id) {
 			trackData.play()
 			setPlaying(true)
@@ -45,7 +44,7 @@ export const PlayerProvider: React.FC<Props> = ({ children }) => {
 			trackData.pause()
 			trackData.currentTime = 0
 		}
-		const track = await getTrackPreview(trackId)
+		const track = await getTrackPreview(id)
 		let audio = new Audio(track.preview_url)
 		setTrackData(audio)
 		setTrackUri(id)
