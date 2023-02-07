@@ -1,9 +1,6 @@
 import playlistjson from '../data/playlist.json'
 import { ErrorMessage, Playlist } from '../types'
 
-const RAPIDAPI_KEY = import.meta.env.PUBLIC_RAPIDAPI_KEY
-const RAPIDAPI_HOST = import.meta.env.PUBLIC_RAPIDAPI_HOST
-
 function getRandomPlaylistId(feeling: string) {
 	const playlists = playlistjson[feeling].map((playlist) => playlist.name)
 
@@ -42,10 +39,12 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 }
 
 function checkingErrorByKey(data: ErrorMessage[]) {
+	console.log(data)
 	const existError = data.find(
 		(playlist: Partial<ErrorMessage>) =>
 			playlist?.message === 'You are not subscribed to this API.' ||
-			playlist?.message === 'Too many requests'
+			playlist?.message === 'Too many requests' ||
+			playlist?.message === 'You have exceeded the MONTHLY quota for Requests on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/Glavier/api/spotify23'
 	)
 	if (existError) throw new Error(data[0].message)
 }
