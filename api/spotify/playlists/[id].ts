@@ -14,10 +14,6 @@ export default async (req: Request) => {
 		})
 		const res = await resp.json()
 
-		if (res?.message) {
-			throw new Error(res.message)
-		}
-
 		return new Response(JSON.stringify(res))
 	} catch (error) {
 		return new Response(JSON.stringify({ message: 'Something went wrong', error }))
