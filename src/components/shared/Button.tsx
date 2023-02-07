@@ -73,12 +73,7 @@ export const ButtonSpinner = ({
 export const Spinner = () => {
 	return (
 		<>
-			<Waveform
-				size={30}
-				lineWeight={3.5}
-				speed={1}
-				color='white'
-			/>
+			<Waveform size={30} lineWeight={3.5} speed={1} color='white' />
 			<span className='grid-2 my-auto -mx-1'> Processing ... </span>
 		</>
 	)

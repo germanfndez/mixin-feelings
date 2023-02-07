@@ -2,7 +2,7 @@ export const config = {
 	runtime: 'edge'
 }
 
-export default async (req: Request, res: any) => {
+export default async (req: Request) => {
 	const { 1: id } = req.url.split('?id=')
 	try {
 		const resp = await fetch(
