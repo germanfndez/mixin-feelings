@@ -23,7 +23,7 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 					<AlertFeedback />
 				</div>
 			) : (
-				<p className='flex flex-col gap-4 py-5 px-7'>
+				<p className='flex py-5 px-7'>
 					You are feeling <span className='lowercase font-bold'>{feelingClassified}</span> today.{' '}
 					<br />
 				</p>
