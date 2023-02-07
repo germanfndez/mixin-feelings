@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { WritableAtom } from 'nanostores'
 import { feelingStore } from '../store/feelingStore'
-import { PromptDataStore } from '../types'
+import type { PromptDataStore } from '../types'
 
 type usePrompDataStoreReturn = [PromptDataStore, WritableAtom<PromptDataStore>]
 

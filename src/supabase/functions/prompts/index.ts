@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { Example } from '../../../types/example'
+import type { Example } from '../../../types/example'
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY

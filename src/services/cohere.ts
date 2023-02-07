@@ -1,5 +1,5 @@
 import { getPromptsData } from '../supabase/functions/prompts/index'
-import { ErrorMessage } from '../types'
+import type { ErrorMessage } from '../types'
 import type { CohereResponse } from '../types/cohere'
 import type { Example } from '../types/example'
 

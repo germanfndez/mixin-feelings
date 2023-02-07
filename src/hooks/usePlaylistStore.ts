@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { playListStore } from '../store/playlistStore'
 import { WritableAtom } from 'nanostores'
-import { Playlist } from '../types'
+import type { Playlist } from '../types'
 
 type usePlaylistStoreReturn = [Playlist[], WritableAtom<Playlist[]>]
 

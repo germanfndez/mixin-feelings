@@ -1,5 +1,5 @@
 import playlistjson from '../data/playlist.json'
-import { ErrorMessage, Playlist } from '../types'
+import type { ErrorMessage, Playlist } from '../types'
 
 function getRandomPlaylistId(feeling: string) {
 	const playlists = playlistjson[feeling].map((playlist) => playlist.name)
