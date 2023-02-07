@@ -38,13 +38,8 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 	}
 }
 
-function checkingErrorByKey(data: ErrorMessage[]) {
-	console.log(data)
-	const existError = data.find(
-		(playlist: Partial<ErrorMessage>) =>
-			playlist?.message === 'You are not subscribed to this API.' ||
-			playlist?.message === 'Too many requests' ||
-			playlist?.message === 'You have exceeded the MONTHLY quota for Requests on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/Glavier/api/spotify23'
-	)
+function checkingErrorByKey(data) {
+	const existError = data.some(
+		(playlist: Partial<ErrorMessage>) => playlist?.message)
 	if (existError) throw new Error(data[0].message)
 }
