@@ -15,8 +15,11 @@ export default async (req: Request) => {
 				}
 			}
 		)
-		const { items } = await resp.json()
-		const [{ track }] = items
+		const res = await resp.json()
+		if (res?.message) {
+			throw new Error(res.message)
+		}
+		const [{ track }] = res.items
 
 		return new Response(JSON.stringify(track))
 	} catch (error) {
