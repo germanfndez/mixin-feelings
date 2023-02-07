@@ -5,6 +5,7 @@ import { customToast, getLabels } from '../utils'
 import { Button } from './shared/Button'
 import LikeIcon from './shared/LikeIcon'
 import DislikeIcon from './shared/DislikeIcon'
+import clsx from 'clsx'
 
 const labels = getLabels()
 
@@ -49,11 +50,13 @@ export const AlertFeedback = () => {
 	return (
 		<section className='flex justify-end items-center lg:p-0 pt-4'>
 			<article
-				className={`flex items-center ${
-					showSelect
-						? 'gap-3 w-full justify-center'
-						: 'gap-1 sm:w-auto w-full sm:justify-end justify-center'
-				} select-none bg-black/20 sm:rounded-full rounded-md sm:py-1 sm:px-3 p-2 text-sm`}
+				className={clsx(
+					'flex items-center select-none bg-black/20 sm:rounded-full rounded-md sm:py-1 sm:px-3 p-2 text-sm',
+					{
+						'gap-3 w-full justify-center': showSelect,
+						'gap-1 sm:w-auto w-full sm:justify-end justify-center': !showSelect
+					}
+				)}
 			>
 				{showSelect ? (
 					<SelectLabel
