@@ -5,6 +5,7 @@ import { customToast, getLabels } from '../utils'
 import { Button } from './shared/Button'
 import LikeIcon from './shared/LikeIcon'
 import DislikeIcon from './shared/DislikeIcon'
+import SendIcon from './shared/SendIcon'
 import clsx from 'clsx'
 
 const labels = getLabels()
@@ -120,13 +121,13 @@ export const SelectLabel = ({
 	currentLabel
 }: PropsSelectLabel) => {
 	return (
-		<div className='flex sm:flex-row flex-col sm:gap-4 gap-2 items-center justify-center w-full'>
+		<div className='flex sm:flex-row flex-col sm:gap-4 gap-2 sm:items-center justify-end sm:justify-center w-full'>
 			<label htmlFor='feedback-cohere'>Select the option you think is correct</label>
 			<select
 				onChange={onChange}
 				id='feedback-cohere'
 				name='labelOption'
-				className=' text-mixin-400 rounded-md h-7 lowercase border sm:w-auto w-full'
+				className='outline-none text-mixin-400 rounded-md h-7 lowercase border sm:w-auto w-full'
 			>
 				{labels
 					.filter((label) => label !== currentLabel)
@@ -138,11 +139,13 @@ export const SelectLabel = ({
 			</select>
 			<div className='flex gap-2 items-center justify-center'>
 				<Button
-					label='Send'
-					className='!text-sm h-7 !bg-mixin-200 !text-black hover:!bg-mixin-100 border border-mixin-hover'
+					label=''
+					className='bg-mixin-500 h-7 text-mixin-300 hover:bg-mixin-hover'
 					withSpinner={false}
 					onClick={handleSentFeedback}
-				/>
+				>
+					<SendIcon />
+				</Button>
 				<span>|</span>
 				<Button
 					label='Cancel'
