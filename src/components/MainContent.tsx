@@ -15,11 +15,6 @@ export const MainContent = () => {
 				}}
 				position='bottom-right'
 			/>
-			<div className='relative z-10 inline-block bg-[length:400%_400%] p-2 rounded-md text-2xl bg-gradient-to-r from-mixin-100 to-[#c5fa70] via-[#e0f0c7] '>
-				<div className='py-5 px-7'>
-					You are feeling <span className='uppercase font-bold'>SAD</span> {' '} today.
-				</div>
-			</div>
 		</main>
 	)
 }
