@@ -39,7 +39,6 @@ export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[]
 }
 
 function checkingErrorByKey(data: ErrorMessage[]) {
-	const existError = data.some(
-		(playlist: Partial<ErrorMessage>) => playlist?.message)
+	const existError = data.some((playlist: Partial<ErrorMessage>) => playlist?.message)
 	if (existError) throw new Error(data[0].message)
 }

@@ -24,8 +24,8 @@ export const FeelingResult = ({ feelingClassified, existsPlaylist }: Props) => {
 				</div>
 			) : (
 				<p className='flex py-5 px-7'>
-					You are feeling <span className='lowercase font-bold'>{feelingClassified}</span> today.{' '}
-					<br />
+					You are feeling <span className='lowercase font-bold mx-[6px]'>{feelingClassified}</span>{' '}
+					today. <br />
 				</p>
 			)}
 		</div>
