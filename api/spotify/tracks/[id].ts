@@ -10,7 +10,7 @@ export default async (req: Request) => {
 			{
 				method: 'GET',
 				headers: {
-					'X-RapidAPI-Key': '84cb500552msh49a094f173be388p1eb688jsn72ef13decef1',
+					'X-RapidAPI-Key': process.env.PUBLIC_RAPIDAPI_KEY,
 					'X-RapidAPI-Host': process.env.PUBLIC_RAPIDAPI_HOST
 				}
 			}
