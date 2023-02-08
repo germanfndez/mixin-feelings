@@ -20,6 +20,7 @@ Dime como te sientes, y te recomendare 3 playlist de **Spotify**!
 
 - Astro
 - React JS
+- Svelte
 - TypeScript
 - Tailwind CSS
 - Supabase
