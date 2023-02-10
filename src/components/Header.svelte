@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte'
 	import GithubIcon from './GithubIcon.svelte'
 	import GithubStar from './GithubStar.svelte'
 	import { repoStars } from '../data/github-repo-data.json'
