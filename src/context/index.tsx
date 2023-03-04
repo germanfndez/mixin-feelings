@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
+import { getTracksById } from '../services/spotify'
 
 interface Context {
 	fetchAndPlay: (id: string) => void
@@ -20,8 +21,8 @@ interface Props {
 
 async function getTrackPreview(id: string): Promise<{ preview_url: string }> {
 	const { 2: trackId } = id.split(':')
-	const res = await fetch(`/api/spotify/tracks/${trackId}`)
-	return await res.json()
+	const res = await getTracksById(trackId)
+	return res
 }
 
 export const PlayerProvider: React.FC<Props> = ({ children }) => {

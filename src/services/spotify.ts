@@ -19,19 +19,60 @@ function getRandomPlaylistId(feeling: string) {
 		.map((playlist) => playlist.id)
 }
 
+export async function getPlaylistById(id: string) {
+	try {
+		const resp = await fetch(`https://spotify23.p.rapidapi.com/playlist/?id=${id}`, {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': import.meta.env.PUBLIC_RAPIDAPI_KEY,
+				'X-RapidAPI-Host': import.meta.env.PUBLIC_RAPIDAPI_HOST
+			}
+		})
+
+		const res = await resp.json()
+
+		return res
+	} catch (error) {
+		return { message: 'Something went wrong', error }
+	}
+}
+
+export async function getTracksById(id: string) {
+	try {
+		const resp = await fetch(
+			`https://spotify23.p.rapidapi.com/playlist_tracks/?id=${id}&offset=0&limit=1`,
+			{
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Key': import.meta.env.PUBLIC_RAPIDAPI_KEY,
+					'X-RapidAPI-Host': import.meta.env.PUBLIC_RAPIDAPI_HOST
+				}
+			}
+		)
+		const res = await resp.json()
+		if (res?.message) {
+			return res
+		}
+		const [{ track }] = res.items
+
+		return track
+	} catch (error) {
+		return { message: 'Something went wrong', error }
+	}
+}
+
 export async function getPlaylistsByFeeling(feeling: string): Promise<Playlist[] | null> {
 	try {
 		const randomPlaylistId = getRandomPlaylistId(feeling)
 		const requests = randomPlaylistId.map((id) => {
-			return fetch(`/api/spotify/playlists/${id}`)
+			return getPlaylistById(id)
 		})
 
 		const response = await Promise.all(requests)
-		const data = await Promise.all(response.map((res) => res.json()))
+		console.log(response)
+		checkingErrorByKey(response as ErrorMessage[])
 
-		checkingErrorByKey(data as ErrorMessage[])
-
-		return data
+		return response
 	} catch (err) {
 		console.error(err)
 		return null
